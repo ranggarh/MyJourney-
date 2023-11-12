@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NativeBaseProvider } from "native-base";
+import React from "react";
+import { Profile, SewaAlat, EditProfile } from "./screens";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const Stack = createNativeStackNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => {
+    return(
+        <>
+          <NavigationContainer>
+            <NativeBaseProvider>
+              <Stack.Navigator>
+                <Stack.Screen name="Profile" component={Profile} options={{headerShown: false}}/>
+                <Stack.Screen name="Edit Profile" component={EditProfile} options={{headerShown: false}} />
+                <Stack.Screen name="Sewa Alat" component={SewaAlat} options={{headerShown: false}} />
+              </Stack.Navigator>
+            </NativeBaseProvider>
+          </NavigationContainer>
+        </>
+
+    );
+};
+
+export default App;
