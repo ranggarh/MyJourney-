@@ -56,9 +56,9 @@ const Profile = () => {
                         <Pressable onPress={() => navigation.navigate("Sewa Alat")} justifyContent={"center"} alignSelf={"center"} w={312} h={46} borderRadius={100} bg={"white"}>
                             <HStack mr={2} justifyContent={"space-between"} alignItems={"center"} >
                                 <HStack alignItems={"center"} ml={15}>
-                                    <Ionicons name="person-circle-outline" size={30} />
+                                    <Ionicons name="list-outline" size={20}/>
                                     <Text ml={2} fontSize={17}>
-                                         Sewa Alat Screen
+                                         Sewa Alat 
                                     </Text>
                                 </HStack>
                                 <Ionicons name="chevron-forward-outline" size={20} />
