@@ -1,8 +1,7 @@
-import { Heading, Image, Text, FlatList } from "native-base";
-import { Box, ScrollView } from "native-base";
-import { TouchableOpacity } from "react-native";
+import { Heading, Image, Text, FlatList, Pressable, Box, Input, Icon } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { Header } from "../components";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import datas from "../datas";
 
 const Berita = () => {
@@ -10,7 +9,7 @@ const Berita = () => {
 
   const renderitem = ({ item }) => {
     return (
-      <TouchableOpacity
+      <Pressable
         activeOpacity={0.5}
         onPress={() => navigation.navigate("News Detail", { item: item })}
       >
@@ -37,44 +36,31 @@ const Berita = () => {
             </Heading>
           </Box>
         </Box>
-      </TouchableOpacity>
+      </Pressable>
     );
   };
 
   return (
     <>
+      
       <Header title={"Berita Terkini"} />
-      {/* <Box py={"4"} bg="red.700">
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {datas.slice(14).map((item, index) => {
-            return (
-  
-                <Box w={"48"} mr={"4"} ml={index == 0 ? "4" : "0"}>
-                  <Image
-                    source={{ uri: item.image }}
-                    w="full"
-                    h="24"
-                    alt="Image Data"
-                    mb={"2"}
-                  />
-                  <Text fontSize={"xs"} color="light.300">
-                    {item.date}
-                  </Text>
-                  <Heading
-                    fontSize={"sm"}
-                    lineHeight={"xs"}
-                    ellipsizeMode="tail"
-                    numberOfLines={2}
-                    color="light.50"
-                  >
-                    {item.title}
-                  </Heading>
-                </Box>
-             
-            );
-          })}
-        </ScrollView>
-      </Box> */}
+      <Box p={4}>
+      <Input
+      size="xl"
+      w="full"
+      placeholder="Search for Article"
+      borderRadius={10}
+      borderColor="muted.400"
+      InputLeftElement={
+        <Icon
+          as={<Ionicons name="search" />}
+          size={5}
+          ml={4}
+          color="muted.500"
+        />
+      }
+    />
+    </Box>
       <FlatList
         data={datas}
         renderItem={renderitem}
