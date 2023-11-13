@@ -57,7 +57,7 @@ const Home = () => {
                 mb={30}>
   
                   <Image
-                  borderRadius={20}
+                  borderTopRadius={25}
                     source={{ uri: item.image }}
                     w="full"
                     h="4/6"

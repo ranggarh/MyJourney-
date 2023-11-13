@@ -28,13 +28,15 @@ const LoginScreen = (props) => {
         <Input
         ml={5}
         mr={5}
-          fontSize={18}
-          mb={5}
+          fontSize={18}          
           placeholder="Password"
         //   onChangeText={setPassword}
         //   value={password}
           secureTextEntry
         />
+        <TouchableOpacity>
+        <Text textAlign={"right"} mr={5} mb={5} color="grey"  > Forgot Password   </Text>
+        </TouchableOpacity>
         <TouchableOpacity>
         <Button
         
