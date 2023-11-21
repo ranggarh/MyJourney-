@@ -100,7 +100,7 @@ const DetailOrder = ({ route }) => {
         <Box  borderBottomWidth={1} borderTopWidth={1} borderColor={"coolGray.300"}>
         <Box borderBottomWidth={1} borderColor={"coolGray.300"} flexDirection="row" justifyContent="space-between" alignItems="center">
           <Heading fontSize={13} p={5}>Choose Your Outdoor Equipment</Heading>
-          <Pressable borderRadius={3}  backgroundColor="#28AA9B" _pressed={{bg: "#0383A2", borderRadius:'5' }}>
+          <Pressable onPress={()=> navigation.navigate("Sewa Alat")} borderRadius={3}  backgroundColor="#28AA9B" _pressed={{bg: "#0383A2", borderRadius:'5' }}>
             <Text p={2} fontSize={14} fontWeight="bold" color="white">Rent Here</Text>
           </Pressable>
         </Box>

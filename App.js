@@ -1,10 +1,12 @@
+import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Profile, SewaAlat, EditProfile } from "./screens";
 import { NavigationContainer } from "@react-navigation/native";
 import { NativeBaseProvider, Text } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from "./screens/home";
-import Profile from "./screens/profile";
+
 import Favorit   from "./screens/favorit";
 import NewsDetail from "./screens/news-detail";
 import DetailWisata from './screens/detailwisata';
@@ -82,6 +84,9 @@ const App = () => {
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
           <Stack.Screen name='Listwisata' component={Listwisata} />
           <Stack.Screen name='DetailWisata' component={DetailWisata} options={noHead} />
+          <Stack.Screen name="Profile" component={Profile} options={{headerShown: false}}/>
+          <Stack.Screen name="Edit Profile" component={EditProfile} options={{headerShown: false}} />
+          <Stack.Screen name="Sewa Alat" component={SewaAlat} options={{headerShown: false}} />
           <Stack.Screen name="Tabs" component={Tabs} options={noHead} />
           <Stack.Screen
             name="News Detail"

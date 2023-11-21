@@ -11,18 +11,18 @@ const DetailWisata = ({ route }) => {
     const params = route.params.item; 
     // params = nyimpan data dari route sebelumnya
     const navigation = useNavigation();
-
+    
     // nambah state booking
-    const [booking, setBookNow] = useState("Book Now");
+    // const [booking, setBookNow] = useState("Book Now");
 
     // buat fungsi untuk mengubah Book Now
     // nilai awal = Book Now
     //  di klik ganti = Sold Out
-    const changeBookNow = () => {
-        if (booking === "Book Now") {
-            setBookNow("Sold Out");
-        }
-    };
+    // const changeBookNow = () => {
+    //     if (booking === "Book Now") {
+    //         setBookNow("Sold Out");
+    //     }
+    // };
 
     return(
         <>
@@ -63,12 +63,12 @@ const DetailWisata = ({ route }) => {
                 </Pressable>
     
                 <Box flexDirection="row">
-                    <Text fontSize={19} color="#28AA9B" fontWeight="800" mt={7}>{params.price}</Text>
+                    <Text fontSize={19} color="#28AA9B" fontWeight="800" mt={7}>{params.hargaTiket}</Text>
                     
                     {/* mengarahkan pressable ke fungsi diatas */}
-                    <Pressable onPress={changeBookNow}>
+                    <Pressable onPress={()=>navigation.navigate("Sewa Alat")}>
                         <Box backgroundColor="#28AA9B" padding={3} marginLeft={8} borderRadius={8} marginTop={5}>
-                            <Text marginLeft={2} marginRight={2} color="white">{booking}</Text>
+                            <Text marginLeft={2} marginRight={2} color="white">Book Now</Text>
                             {/* state booking dipanggil disini */}
                         </Box>
                     </Pressable>
