@@ -10,11 +10,6 @@ const Profile = () => {
         <>
             <ImageBackground source={require("../assets/background.png")} style={{flex:1, resizeMode:"cover"}}>
                 <Box mt={10} ml={18}>
-                    <Pressable onPress={() => alert('tombol ditekan')}>
-                        <Box bg={"white"} borderRadius={100} w={35} h={35}>
-                            <Ionicons name="chevron-back-outline" size={35} color={"black"}/>
-                        </Box>
-                    </Pressable>
                 </Box>
                 <Box flex={1} mt={50} alignSelf={"center"} alignItems={"center"} >
                     <Image source={require("../assets/profile.jpeg")} w={128} h={128} borderRadius={100} alt="Profile Picture"/>

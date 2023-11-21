@@ -20,7 +20,7 @@ const EditProfile = () => {
                     <Box flex={1} bg="rgba(0, 0, 0, 0.6)" justifyContent={"center"} alignItems={"center"}>
                         <Image source={require("../assets/profile.jpeg")} alt="Profile Picture" h={150} w={150} borderRadius={100} />
                         <Box w={"75%"}  mt={35} >
-                            <Input focusOutlineColor={"#28AA9B"} fontSize={14} variant={"underlined"} value={nama}  placeholder="Masukkan Nama Baru" maxW={"auto"} color={"white"} onChangeText={(text) => setNama(text)} />
+                            <Input focusOutlineColor={"#28AA9B"} fontSize={14} variant={"underlined"} value={nama}  placeholder="Masukkan Username Baru" maxW={"auto"} color={"white"} onChangeText={(text) => setNama(text)} />
                             {nama !== "" && (
                                 <Pressable position={"absolute"} right={2} top={3} onPress={clearInput}>
                                     <Ionicons name="close" size={20} color={"white"} />

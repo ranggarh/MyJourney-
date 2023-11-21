@@ -4,32 +4,36 @@ import { Box, HStack, Heading, Pressable } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 
-const Header = ({ title, withBack, withCheck = false }) => {
+const Header = ({ title, withBack = false }) => {
+  const warnaHeaderBerita = "#28AA9B"
   const navigation = useNavigation();
   return (
     <SafeAreaView>
-      <StatusBar barStyle="dark-content" backgroundColor={"white"} />
-      <Box bg={"white"} p={"4"} elevation={15} shadow={5}>
+      <StatusBar barStyle="light" backgroundColor={warnaHeaderBerita} />
+      <Box bg={warnaHeaderBerita} p={"4"}>
         <HStack justifyContent="space-between" alignItems="center">
-          <HStack alignItems="center"  >
-            {withBack && (
-                <Pressable
+          <HStack alignItems="center">
+            {!withBack ? (
+              <>
+                {/* <Image
+                  source={require("../assets/cnn.png")}
+                  w="12"
+                  h="12"
+                  alt="CNN Logo"
+                  mr={"3"}
+                /> */}
+              </>
+            ) : (
+              <Pressable
                 activeOpacity={0.5}
                 onPress={() => navigation.goBack()}
-                >
+              >
                 <Box mr={"3"}>
-                    <Ionicons name="chevron-back-outline" size={32} color="black" />
-                </Box>
-                </Pressable>
-            )}
-            <Heading flex={1} textAlign={"center"} color={"black"}>{title}</Heading>
-            {withCheck && (
-              <Pressable onPress={() => alert("tombol ditekan")}>
-                <Box>
-                  <Ionicons name="checkmark" size={32} color={"green"} />
+                  <Ionicons name="arrow-back-outline" size={32} color="white" />
                 </Box>
               </Pressable>
             )}
+            <Heading color={"white"}>{title}</Heading>
           </HStack>
         </HStack>
       </Box>
