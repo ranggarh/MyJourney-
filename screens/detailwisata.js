@@ -25,13 +25,15 @@ const DetailWisata = ({ route }) => {
     };
 
     return(
+        <>
+        <Header title={"Detail Wisata"} withBack="true"/>
         <ScrollView>
         <Box>
-            <Header title={"Detail Wisata"} withBack="true"/>
+            {/* <Header title={"Detail Wisata"} withBack="true"/> */}
             <Box maxW="100%">
                 <Box>
                 <AspectRatio w="100%" ratio={15 / 17}>
-                    <Image source={{ uri: params.avatarUrl}} alt="Image Data"></Image>
+                    <Image source={{ uri: params.image}} alt="Image Data"></Image>
                 </AspectRatio>
                 </Box>
             </Box>
@@ -75,6 +77,7 @@ const DetailWisata = ({ route }) => {
             </Box>
         </Box>
         </ScrollView>
+        </>
         );
     };
 
