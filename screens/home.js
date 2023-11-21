@@ -43,7 +43,7 @@ const Home = () => {
                 key={index}
                 onPress={() =>
                 
-                  navigation.navigate("News Detail", { item: item })
+                  navigation.navigate("DetailWisata", { item: item })
                 }
               >
                 <Box 
@@ -79,7 +79,7 @@ const Home = () => {
                     mb={1}
                     
                   >
-                    {item.name}
+                    {item.title_wisata}
                     
                   </Heading>
                   <Box ml={2}>
@@ -100,7 +100,7 @@ const Home = () => {
                 activeOpacity={0.5}
                 key={index}
                 onPress={() =>
-                  navigation.navigate("News Detail", { item: item })
+                  navigation.navigate("DetailWisata", { item: item })
                 }
               >
                 <Box 

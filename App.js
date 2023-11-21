@@ -7,6 +7,9 @@ import Home from "./screens/home";
 import Profile from "./screens/profile";
 import Favorit   from "./screens/favorit";
 import NewsDetail from "./screens/news-detail";
+import DetailWisata from './screens/detailwisata';
+import Listwisata from './screens/listwisata';
+
 
 import LoginScreen from "./screens/auth/LoginScreen";
 import RegisterScreen from "./screens/auth/RegisterScreen";
@@ -49,7 +52,7 @@ const Tabs = () => {
             <Ionicons
               name={iconName}
               size={30}
-              color={focused ? "grey" : color}
+              color={focused ? "lightblue" : color}
             />
           );
         },
@@ -77,7 +80,8 @@ const App = () => {
         <Stack.Navigator>
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-
+          <Stack.Screen name='Listwisata' component={Listwisata} />
+          <Stack.Screen name='DetailWisata' component={DetailWisata} options={noHead} />
           <Stack.Screen name="Tabs" component={Tabs} options={noHead} />
           <Stack.Screen
             name="News Detail"
