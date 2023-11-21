@@ -8,7 +8,7 @@ const EditProfile = () => {
     const [nama, setNama] = useState("");
 
     const clearInput = () => {
-        setNama("");
+        setNama("pesan dihapus");
     };
 
 
