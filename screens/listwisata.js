@@ -49,20 +49,6 @@ const Listwisata = () => {
   return (
     <>
       <Header title={"Lumajang"} withBack="true" />
-        {/* <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {datas.slice(6).map((item, index) => {
-            return (
-              <Pressable
-                activeOpacity={0.5}
-                key={index}
-                onPress={() =>
-                  navigation.navigate("Detail", { item: item })
-                }
-              >
-              </Pressable>
-            );
-          })}
-        </ScrollView> */}
       <FlatList
         data={datas}
         renderItem={renderitem}
