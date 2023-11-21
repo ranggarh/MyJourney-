@@ -36,7 +36,7 @@ const Home = () => {
         </Stack>
         <Heading size="lg" mt={10} marginLeft={5} color="#B3B3B3">Top Destination</Heading>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} mt={10}  >
-          {datas.slice(14).map((item, index) => {
+          {datas.slice(1).map((item, index) => {
             return (
               <TouchableOpacity
                 activeOpacity={0.5}
@@ -83,7 +83,7 @@ const Home = () => {
                     
                   </Heading>
                   <Box ml={2}>
-                  <Ionicons name="location" color="#28AA9B" size={14}  > {item.lokasi}  </Ionicons>
+                  <Ionicons name="location" color="#28AA9B" size={14}  > {item.kota}  </Ionicons>
                   </Box>
                 </Box>
               </TouchableOpacity>             
@@ -94,7 +94,7 @@ const Home = () => {
         <Box >
         <Heading size="sm"  ml={5} mb={5} >CATEGORIES</Heading>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}  >
-          {datas.slice(14).map((item, index) => {
+          {datas.slice(1).map((item, index) => {
             return (
               <TouchableOpacity
                 activeOpacity={0.5}
@@ -115,7 +115,7 @@ const Home = () => {
                  >
                  
                   <Text bold fontSize={"sm"}  color="black"  >
-                    {item.categories}
+                    {item.kategori}
                   </Text>
                 </Box>
               </TouchableOpacity>             

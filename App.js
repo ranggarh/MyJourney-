@@ -4,13 +4,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import { NativeBaseProvider, Text } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from "./screens/home";
-import News from "./screens/news";
 import Profile from "./screens/profile";
 import Favorit   from "./screens/favorit";
 import NewsDetail from "./screens/news-detail";
-import { loginscreen, registerscreen } from "./screens/auth";
+
 import LoginScreen from "./screens/auth/LoginScreen";
 import RegisterScreen from "./screens/auth/RegisterScreen";
+import Berita from "./screens/berita";
+
+import DetailOrder from "./screens/detail-order";
 
 
 // Navigator Declaration
@@ -34,7 +36,7 @@ const Tabs = () => {
               iconName = "heart";
               color="white" ;
               break;
-            case "News":
+            case "Berita":
               iconName = "newspaper-outline";
               color="white" ;
               break;
@@ -62,7 +64,7 @@ const Tabs = () => {
     >
       <Tab.Screen name="Home" component={Home} options={noHead} />
       <Tab.Screen name="Favorit" component={Favorit} options={noHead} />
-      <Tab.Screen name="News" component={News} options={noHead} />
+      <Tab.Screen name="Berita" component={Berita} options={noHead} />
       <Tab.Screen name="Profile" component={Profile} options={noHead} />
     </Tab.Navigator>
   );
@@ -80,6 +82,11 @@ const App = () => {
           <Stack.Screen
             name="News Detail"
             component={NewsDetail}
+            options={noHead}
+          />
+          <Stack.Screen
+            name="DetailOrder"
+            component={DetailOrder}
             options={noHead}
           />
         </Stack.Navigator>
