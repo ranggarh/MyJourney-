@@ -11,6 +11,9 @@ const DetailWisata = ({ route }) => {
     const params = route.params.item; 
     // params = nyimpan data dari route sebelumnya
     const navigation = useNavigation();
+    const formatCurrency = (value) => {
+        return value.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
+      };
     
     // nambah state booking
     // const [booking, setBookNow] = useState("Book Now");
@@ -41,7 +44,7 @@ const DetailWisata = ({ route }) => {
                 <Stack p="10" h="100%" space={3}>
                 <Stack space={6}>
                     <Heading size="lg" ml="-1">
-                        {params.title}
+                        {params.title_wisata}
                     </Heading>
                     <Text fontSize="sm" ml={-1} mt={-6} >
                         {params.star}
@@ -62,11 +65,11 @@ const DetailWisata = ({ route }) => {
                     </HStack>
                 </Pressable>
     
-                <Box flexDirection="row">
-                    <Text fontSize={19} color="#28AA9B" fontWeight="800" mt={7}>{params.hargaTiket}</Text>
+                <Box flexDirection="row" justifyContent="space-between">
+                    <Text fontSize={19} color="#28AA9B" fontWeight="800" mt={7}>{formatCurrency(params.hargaTiket)}</Text>
                     
                     {/* mengarahkan pressable ke fungsi diatas */}
-                    <Pressable onPress={()=>navigation.navigate("Sewa Alat")}>
+                    <Pressable onPress={()=>navigation.navigate("DetailOrder",{ item: params })}>
                         <Box backgroundColor="#28AA9B" padding={3} marginLeft={8} borderRadius={8} marginTop={5}>
                             <Text marginLeft={2} marginRight={2} color="white">Book Now</Text>
                             {/* state booking dipanggil disini */}

@@ -8,7 +8,7 @@ const DetailOrder = ({ route }) => {
   const params = route.params.item;
   const navigation = useNavigation();
   const [ticketCount, setTicketCount] = useState(1);
-
+  const [ticketCount2, setTicketCount2] = useState(1);
   const serviceFee = 5000;
   const hargaSewa = params.hargaSewa;
   const hargaTiket = params.hargaTiket;
@@ -34,6 +34,7 @@ const DetailOrder = ({ route }) => {
       <Box  borderRadius={4} backgroundColor={"#0383A2"} borderColor={"coolGray.300"}>
           <Heading color="white" p={3} fontSize={15}>Your Destination</Heading>
       </Box>
+        
         <Box
           p={"4"}
           borderColor={"coolGray.300"}
@@ -94,13 +95,14 @@ const DetailOrder = ({ route }) => {
            <Heading fontSize={15} mx="auto" > {formatCurrency(ticketCount * hargaTiket)}</Heading>
           </Ionicons>
         </Box>
+        {/* test */}
         <Box mt={4} borderRadius={4} backgroundColor={"#0383A2"} borderColor={"coolGray.300"}>
           <Heading color="white" p={3} fontSize={15}>Opsional Outdoor Equipment</Heading>
         </Box>
         <Box  borderBottomWidth={1} borderTopWidth={1} borderColor={"coolGray.300"}>
         <Box borderBottomWidth={1} borderColor={"coolGray.300"} flexDirection="row" justifyContent="space-between" alignItems="center">
           <Heading fontSize={13} p={5}>Choose Your Outdoor Equipment</Heading>
-          <Pressable onPress={()=> navigation.navigate("Sewa Alat")} borderRadius={3}  backgroundColor="#28AA9B" _pressed={{bg: "#0383A2", borderRadius:'5' }}>
+          <Pressable onPress={()=> navigation.navigate("Sewa Alat",{ item: params })} borderRadius={3}  backgroundColor="#28AA9B" _pressed={{bg: "#0383A2", borderRadius:'5' }}>
             <Text p={2} fontSize={14} fontWeight="bold" color="white">Rent Here</Text>
           </Pressable>
         </Box>

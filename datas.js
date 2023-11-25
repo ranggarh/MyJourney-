@@ -3,6 +3,7 @@ const content =
 
 const datas = [
   {
+    //Data Tiket
     id: 1,
     date: "10 Oktober 2023",
     title:
@@ -16,6 +17,10 @@ const datas = [
     kategori:'Mountain',
     hargaTiket: 150000,
     hargaSewa: 45000,
+    //Data Sewa
+    nama_alat: 'Carrier',
+    image_sewa:"https://thumbor.sirclocdn.com/unsafe/640x640/filters:format(webp)/magento.eigeradventure.com/media/catalog/product/cache/cd1064cf96e0921aa13324f8e3f8fe30/t/a/tas-gunung-wanita-escapade-25-ws-carrier.jpg",
+    harga_alat: 100000,
   },
   {
     id: 2,
@@ -30,6 +35,10 @@ const datas = [
     kategori:'Mountain',
     hargaTiket: 100000,
     hargaSewa: 45000,
+    //Data Sewa
+    nama_alat: 'Tenda',
+    image_sewa:'https://img.id.my-best.com/product_images/8188b9cd4fe6c1ae1471891a726f1489.jpeg?ixlib=rails-4.3.1&q=70&lossless=0&w=800&h=800&fit=clip&s=4ef781e26f4d789dbfadb713660f4f68',
+    harga_alat: 30000,
   },
   {
     id: 3,
@@ -45,6 +54,10 @@ const datas = [
     kategori:'Beach',
     hargaTiket: 90000,
     hargaSewa: 45000,
+    //Data Sewa
+    nama_alat: 'Sepatu Gunung',
+    image_sewa:'https://s0.bukalapak.com/img/06264829003/s-463-463/data.jpg.webp',
+    harga_alat: 100000,
   },
   {
     id: 4,
@@ -59,6 +72,10 @@ const datas = [
     kategori:'Beach',
     hargaTiket: 120000,
     hargaSewa: 45000,
+    //Data Sewa
+    nama_alat: 'Sleeping Bag',
+    image_sewa:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5TmNm3YRHr5v0Z8Dso1_EeEeJWPMxNAdqqQ&usqp=CAU",
+    harga_alat: 70000,
   },
   {
     id: 5,
@@ -74,6 +91,10 @@ const datas = [
     kategori:'Mountain',
     hargaTiket: 40000,
     hargaSewa: 45000,
+    //Data Sewa
+    nama_alat: 'Flysheet',
+    image_sewa:"https://shop.consina-adventure.com/image/cache/data/product/ACCESSORIES/FlySheet/200%20x%20300/rev-flysheet-6-800x800.jpg",
+    harga_alat: 20000,
   },
   {
     id: 6,
@@ -89,6 +110,10 @@ const datas = [
     kategori:'Mountain',
     hargaTiket: 70000,
     hargaSewa: 45000,
+    //Data Sewa
+    nama_alat: 'Lampu Tenda',
+    image_sewa:"https://images.tokopedia.net/img/cache/500-square/VqbcmM/2021/3/16/819ba534-9a74-4263-acbc-405399775108.jpg",
+    harga_alat: 10000,
   },
   // {
   //   id: 7,
