@@ -1,6 +1,6 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "react-native";
-import { Box, HStack, Heading, Pressable } from "native-base";
+import { Box, HStack, Heading, Pressable, Image } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
 
@@ -9,19 +9,20 @@ const Header = ({ title, withBack = false }) => {
   const navigation = useNavigation();
   return (
     <SafeAreaView>
-      <StatusBar barStyle="light" backgroundColor={warnaHeaderBerita} />
-      <Box bg={warnaHeaderBerita} p={"4"}>
+      <StatusBar barStyle="light" backgroundColor={"#0383A2"} />
+      <Box bg={"#0383A2"} p={"4"}>
         <HStack justifyContent="space-between" alignItems="center">
           <HStack alignItems="center">
             {!withBack ? (
               <>
-                {/* <Image
-                  source={require("../assets/cnn.png")}
-                  w="12"
-                  h="12"
+                <Image
+                  source={require("../assets/myjourney-logo2.png")}
+                  w="7"
+                  h="7"
                   alt="CNN Logo"
                   mr={"3"}
-                /> */}
+                  borderRadius={20}
+                />
               </>
             ) : (
               <Pressable

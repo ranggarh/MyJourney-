@@ -60,7 +60,7 @@ const Tabs = () => {
         },
         tabBarIconStyle: { marginTop: 5 },
         tabBarStyle: {
-          backgroundColor:"#28AA9B",
+          backgroundColor:"#0383A2",
           height: 70,
           borderTopWidth: 0,
         },

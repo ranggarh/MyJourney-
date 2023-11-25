@@ -8,7 +8,8 @@ const DetailOrder = ({ route }) => {
   const params = route.params.item;
   const navigation = useNavigation();
   const [ticketCount, setTicketCount] = useState(1);
-  const [ticketCount2, setTicketCount2] = useState(1);
+
+  const totalPayment = route.params.totalPayment ||0;
   const serviceFee = 5000;
   const hargaSewa = params.hargaSewa;
   const hargaTiket = params.hargaTiket;
@@ -110,20 +111,20 @@ const DetailOrder = ({ route }) => {
           <Heading  p={3} fontSize={15}>Order Details</Heading>
         </Box>
         <Box flexDirection="row" justifyContent="space-between" alignItems="center">
-          <Heading fontSize={13} ml={5}>Ticket Destination</Heading>
-            <Text p={2} fontSize={13} fontWeight="bold">{formatCurrency(ticketCount * hargaTiket)}</Text>
+          <Heading color={'grey'} fontSize={13} ml={5}>Ticket Destination</Heading>
+            <Text color={'grey'} p={2} fontSize={13} fontWeight="bold">{formatCurrency(ticketCount * hargaTiket)}</Text>
         </Box>
         <Box  flexDirection="row" justifyContent="space-between" alignItems="center">
-          <Heading fontSize={13} ml={5} >Outdoor Equipment</Heading>
-            <Text p={2} fontSize={13} fontWeight="bold">{formatCurrency(hargaSewa)}</Text>
+          <Heading color={'grey'} fontSize={13} ml={5} >Outdoor Equipment</Heading>
+            <Text color={'grey'} p={2} fontSize={13} fontWeight="bold">{formatCurrency(totalPayment)}</Text>
         </Box>
         <Box  flexDirection="row" justifyContent="space-between" alignItems="center">
-          <Heading fontSize={13} ml={5} >Service Fee</Heading>
-          <Text p={2} fontSize={13} fontWeight="bold">{formatCurrency(serviceFee)}</Text>
+          <Heading color={'grey'} fontSize={13} ml={5} >Service Fee</Heading>
+          <Text color={'grey'} p={2} fontSize={13} fontWeight="bold">{formatCurrency(serviceFee)}</Text>
         </Box>
         <Box borderTopWidth={1} borderColor={"coolGray.100"} flexDirection="row" justifyContent="space-between" alignItems="center">
           <Heading fontSize={13} ml={5} >Total Pembayaran</Heading>
-          <Text p={2} fontSize={13} fontWeight="bold">{formatCurrency(((ticketCount * hargaTiket) + hargaSewa + serviceFee))}</Text>
+          <Text p={2} fontSize={15} fontWeight="bold">{formatCurrency(((ticketCount * hargaTiket) + totalPayment + serviceFee))}</Text>
         </Box>
       </Box>
       <Pressable mt={2} onPress={() => navigation.navigate("Favorit")} backgroundColor={"#28AA9B"} _pressed={{bg: "#0383A2", borderRadius:'10' }}  borderRadius={10}>

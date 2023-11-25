@@ -10,22 +10,22 @@ const SewaAlat = ({ route }) => {
   const navigation = useNavigation();
 
   // Create state variables for each item's ticket count
-  const [ticketCounts, setTicketCounts] = useState(Array(6).fill(1));
+  const [sewaCounts, setSewaCounts] = useState(Array(6).fill(1));
 
   // Keep track of the total payment
   let totalPayment = 0;
 
-  const incrementTicket = (index) => {
-    const newTicketCounts = [...ticketCounts];
-    newTicketCounts[index] += 1;
-    setTicketCounts(newTicketCounts);
+  const incrementSewa = (index) => {
+    const newSewaCounts = [...sewaCounts];
+    newSewaCounts[index] += 1;
+    setSewaCounts(newSewaCounts);
   };
 
-  const decrementTicket = (index) => {
-    if (ticketCounts[index] > 0) {
-      const newTicketCounts = [...ticketCounts];
-      newTicketCounts[index] -= 1;
-      setTicketCounts(newTicketCounts);
+  const decrementSewa = (index) => {
+    if (sewaCounts[index] > 0) {
+      const newSewaCounts = [...sewaCounts];
+      newSewaCounts[index] -= 1;
+      setSewaCounts(newSewaCounts);
     }
   };
 
@@ -42,7 +42,7 @@ const SewaAlat = ({ route }) => {
         </Box>
         {datas.slice(0, 6).map((item, index) => {
           // Calculate the total for each item
-          const itemTotal = ticketCounts[index] * item.harga_alat;
+          const itemTotal = sewaCounts[index] * item.harga_alat;
           totalPayment += itemTotal;
 
           return (
@@ -70,25 +70,25 @@ const SewaAlat = ({ route }) => {
               </Box>
               <Box flexDirection="row" marginTop={5} marginRight={9}>
                 <Heading fontSize={15} ml={5}>
-                  Number of Ticket
+                  Number of Equipment
                 </Heading>
                 <Ionicons
                   style={{ color: "#28AA9B", marginLeft: 80 }}
                   size={20}
                   name="remove-circle-outline"
-                  onPress={() => decrementTicket(index)}
+                  onPress={() => decrementSewa(index)}
                 />
-                <Text mx="auto">{ticketCounts[index]}</Text>
+                <Text mx="auto">{sewaCounts[index]}</Text>
                 <Ionicons
                   style={{ color: "#28AA9B" }}
                   size={20}
                   name="add-circle-outline"
-                  onPress={() => incrementTicket(index)}
+                  onPress={() => incrementSewa(index)}
                 />
               </Box>
               <Box flexDirection="row" marginTop={5} marginBottom={5}>
                 <Heading fontSize={15} ml={5}>
-                  Price
+                  Total 
                 </Heading>
                 <Ionicons style={{ color: "#28AA9B", marginLeft: 160 }} size={20}>
                   <Heading fontSize={15} mx="auto"> {formatCurrency(itemTotal)}</Heading>
@@ -102,7 +102,7 @@ const SewaAlat = ({ route }) => {
 
         </Box>
       </ScrollView>
-      <Pressable onPress={() => navigation.navigate("DetailOrder",{item:params, selectedOutdoorEquipment: { /* add relevant outdoor equipment data here */ }})} backgroundColor={"#28AA9B"} _pressed={{ bg: "#0383A2", borderRadius: '10' }} >
+      <Pressable onPress={() => navigation.navigate("DetailOrder",{item:params, totalPayment: totalPayment})} backgroundColor={"#28AA9B"} _pressed={{ bg: "#0383A2", borderRadius: '10' }} >
         <Heading alignSelf="center" color="white" p={4} fontSize={15}>Total Payment : {formatCurrency(totalPayment)}</Heading>
       </Pressable>
     </>

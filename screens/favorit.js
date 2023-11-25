@@ -26,13 +26,13 @@ const Favorit = () => {
   };
   return (
     <>
-      <Header title={"My Journey - Favorit"} />
-      <Heading size="lg" mt={5} marginLeft={5} color="black">My Favorite</Heading>
+      <Header title={"Favorit"} />
+      <Heading size="lg" mt={5} marginLeft={5} color="black">Top Favorite</Heading>
       <Box py={"4"} >
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           {datas.slice(0).map((item, index) => {
             return (  
-              <Pressable activeOpacity={0.5} key={index} onPress={() => navigation.navigate("DetailOrder", { item: item })}>
+              <Pressable activeOpacity={0.5} key={index} onPress={() => navigation.navigate("DetailWisata", { item: item })}>
                 <Box w={"150"} mr={"4"} ml={index == 0 ? "4" : "0"}>
                   <Image
                     source={{ uri: item.image }}
