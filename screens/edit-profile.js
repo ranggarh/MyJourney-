@@ -16,9 +16,9 @@ const EditProfile = () => {
         <>
             <Header title={"Edit Profile"} withBack={true} withCheck={true} />
             <ScrollView showsVerticalScrollIndicator={false}>
-                <ImageBackground style={{width: "100%", height: 300}} blurRadius={3} source={require("../assets/profile.jpeg")}>
+                <ImageBackground style={{width: "100%", height: 300}} blurRadius={3} source={require("../assets/background.png")}>
                     <Box flex={1} bg="rgba(0, 0, 0, 0.6)" justifyContent={"center"} alignItems={"center"}>
-                        <Image source={require("../assets/profile.jpeg")} alt="Profile Picture" h={150} w={150} borderRadius={100} />
+                    <Ionicons name="person-circle-outline" size={128} color={"white"}></Ionicons>
                         <Box w={"75%"}  mt={35} >
                             <Input focusOutlineColor={"#28AA9B"} fontSize={14} variant={"underlined"} value={nama}  placeholder="Masukkan Username Baru" maxW={"auto"} color={"white"} onChangeText={(text) => setNama(text)} />
                             {nama !== "" && (

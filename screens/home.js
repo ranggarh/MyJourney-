@@ -11,9 +11,9 @@ const Home = () => {
   const navigation = useNavigation();
   return (
     <>
-      <Header title={"News"} />
-      <Box p={5}   backgroundColor="white">
-        <Heading size="2xl">My Journey </Heading>
+      <Header title={"Home"} />
+      <Box p={5}  backgroundColor="white">
+        <Heading mt={6} size="2xl">My Journey </Heading>
         <Heading size="sm">Make Your Journey</Heading>
       </Box>
       <Box backgroundColor="white">

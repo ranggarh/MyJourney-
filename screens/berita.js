@@ -43,7 +43,7 @@ const Berita = () => {
   return (
     <>
       
-      <Header title={"Berita Terkini"} />
+      <Header title={"Hot News"} />
       <Box p={4}>
       <Input
       size="xl"
