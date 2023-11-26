@@ -10,7 +10,7 @@ const SewaAlat = ({ route }) => {
   const navigation = useNavigation();
 
   // Create state variables for each item's ticket count
-  const [sewaCounts, setSewaCounts] = useState(Array(6).fill(1));
+  const [sewaCounts, setSewaCounts] = useState(Array(6).fill(0));
 
   // Keep track of the total payment
   let totalPayment = 0;

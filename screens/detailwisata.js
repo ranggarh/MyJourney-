@@ -55,7 +55,7 @@ const DetailWisata = ({ route }) => {
                 </Stack>
                 <Text ml={-1.5}>{params.content} </Text>
     
-                <Pressable onPress={ () => navigation.navigate("NewsDetail")} >
+                <Pressable onPress={ () => navigation.navigate("Berita")} >
                     <HStack alignItems="center" space={3} justifyContent="space-between">
                         <HStack alignItems="center">
                         <Text fontSize={15} ml={-1.5} textAlign="center" color="#28AA9B" fontWeight="400">

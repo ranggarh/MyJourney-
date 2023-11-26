@@ -104,7 +104,7 @@ const datas = [
     image:
       "https://i.pinimg.com/564x/1a/fa/38/1afa38752eab119eeb7f059111e3da39.jpg",
     content: content,
-    kota: 'Lumajang',
+    kota: 'Blitar',
     title_wisata:'B-29 Semeru',
     emoji:'⭐⭐⭐⭐⭐',
     kategori:'Mountain',

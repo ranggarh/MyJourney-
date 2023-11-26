@@ -82,7 +82,7 @@ const App = () => {
         <Stack.Navigator>
           <Stack.Screen name="LoginScreen" component={LoginScreen} />
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-          <Stack.Screen name='Listwisata' component={Listwisata} />
+          <Stack.Screen name='Listwisata' component={Listwisata} options={noHead} />
           <Stack.Screen name='DetailWisata' component={DetailWisata} options={noHead} />
           <Stack.Screen name="Profile" component={Profile} options={{headerShown: false}}/>
           <Stack.Screen name="Edit Profile" component={EditProfile} options={{headerShown: false}} />
