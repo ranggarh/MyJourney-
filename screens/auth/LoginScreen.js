@@ -1,12 +1,13 @@
 import { CommonActions } from "@react-navigation/native"; // Import CommonActions for navigation
 import React, { useState } from "react";
-import { StatusBar, TouchableOpacity} from "react-native";
-import { Input, Button, Text, Heading, Box, } from "native-base";
+import { StatusBar,} from "react-native";
+import { Input, Button, Text, Heading, Box, Pressable } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 const LoginScreen = (props) => {
   return (
     <Box mt={20} >
+      
       <StatusBar backgroundColor="white" barStyle="dark-content" />
 
       <Box alignItems="center"  mb={5}  >
@@ -34,10 +35,11 @@ const LoginScreen = (props) => {
         //   value={password}
           secureTextEntry
         />
-        <TouchableOpacity>
+        <Pressable>
         <Text textAlign={"right"} mr={5} mb={5} color="grey"  > Forgot Password   </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </Pressable>
+
+        <Pressable>
         <Button
         
           p={4}
@@ -55,7 +57,7 @@ const LoginScreen = (props) => {
             Login
           </Heading>
         </Button>
-        </TouchableOpacity>
+        </Pressable>
         <Button
           p={4}
           ml={10}
@@ -64,9 +66,9 @@ const LoginScreen = (props) => {
           color="#FFFFFF"
           borderRadius={15}
           style={{
-            borderColor: "#0F7EF8", // Replace with your desired border color
-            borderWidth: 1, // You can adjust the width of the border if needed
-            backgroundColor: "#FFFFFF", // Set the background to transparent to keep it unchanged
+            borderColor: "#0F7EF8", 
+            borderWidth: 1, 
+            backgroundColor: "#FFFFFF", 
           }}
           onPress={() => {
             props.navigation.dispatch(CommonActions.navigate("RegisterScreen"));
@@ -76,7 +78,6 @@ const LoginScreen = (props) => {
             Register Account
           </Heading>
         </Button>
-        {/* {error && <Text style={styles.errorText}>{error}</Text>} */}
       </Box>
     </Box>
   );

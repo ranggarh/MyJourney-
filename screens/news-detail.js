@@ -19,13 +19,6 @@ const NewsDetail = ({ route }) => {
           </Text>
         </Box>
       </ScrollView>
-
-      
-      {
-      /* <Center flex={1} p={"4"}>
-        <Heading>News Detail</Heading>
-        <Text textAlign={"center"}>{params.title}</Text>
-      </Center> */}
     </>
   );
 };

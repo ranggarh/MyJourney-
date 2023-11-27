@@ -1,6 +1,5 @@
-import { Heading, Image, Text, FlatList, Center } from "native-base";
-import { Box, ScrollView, Stack, Input, Icon } from "native-base";
-import { TouchableOpacity } from "react-native";
+import { Heading, Image, Text } from "native-base";
+import { Box, ScrollView, Stack, Input, Icon, Pressable } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { Header } from "../components";
 import datas from "../datas";
@@ -38,7 +37,7 @@ const Home = () => {
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} mt={10}  >
           {datas.slice(14).map((item, index) => {
             return (
-              <TouchableOpacity
+              <Pressable
                 activeOpacity={0.5}
                 key={index}
                 onPress={() =>
@@ -51,17 +50,19 @@ const Home = () => {
                 h="64" 
                 mr={"4"}  
                 ml={index == 0 ? "4" : "0"}   
-                borderRadius={30} 
+                borderRadius={20} 
                 borderColor="coolGray.100" 
                 borderWidth={4} 
                 mb={30}>
   
                   <Image
-                  borderTopRadius={25}
+                  borderTopRadius={15}
                     source={{ uri: item.image }}
                     w="full"
                     h="4/6"
+                    mb={2}
                     alt="Image Data"
+                    
                     
                    
                   />
@@ -86,17 +87,17 @@ const Home = () => {
                   <Ionicons name="location" color="#28AA9B" size={14}  > {item.lokasi}  </Ionicons>
                   </Box>
                 </Box>
-              </TouchableOpacity>             
+              </Pressable>           
             );           
           })}        
         </ScrollView>
         
         <Box >
-        <Heading size="sm"  ml={5} mb={5} >CATEGORIES</Heading>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}  >
+        <Heading size="sm"  ml={5} mb={"2"} >CATEGORIES</Heading>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}   >
           {datas.slice(14).map((item, index) => {
             return (
-              <TouchableOpacity
+              <Pressable
                 activeOpacity={0.5}
                 key={index}
                 onPress={() =>
@@ -104,8 +105,8 @@ const Home = () => {
                 }
               >
                 <Box 
-                w={"40"} 
-                h={10} 
+                w={"32"} 
+                h={"10"} 
                 mr={"4"} 
                 ml={index == 0 ? "4" : "0"} borderWidth={3} 
                 borderColor="coolGray.100" 
@@ -114,25 +115,16 @@ const Home = () => {
                 alignItems="center"
                  >
                  
-                  <Text bold fontSize={"sm"}  color="black"  >
+                  <Text bold fontSize={"sm"} textAlign={"right"}  color="black"  >
                     {item.categories}
                   </Text>
                 </Box>
-              </TouchableOpacity>             
+              </Pressable>            
             );           
           })}        
         </ScrollView>
         </Box>
       </Box>
-      
-      
-      {/* <FlatList
-        data={datas}
-        renderItem={renderitem}
-        keyExtractor={(item) => item.id}
-        showsVerticalScrollIndicator={false}
-      /> */}
-      
     </>
   );
 };

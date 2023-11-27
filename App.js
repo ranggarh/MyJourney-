@@ -8,7 +8,6 @@ import News from "./screens/news";
 import Profile from "./screens/profile";
 import Favorit   from "./screens/favorit";
 import NewsDetail from "./screens/news-detail";
-import { loginscreen, registerscreen } from "./screens/auth";
 import LoginScreen from "./screens/auth/LoginScreen";
 import RegisterScreen from "./screens/auth/RegisterScreen";
 
