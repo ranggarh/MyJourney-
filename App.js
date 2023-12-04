@@ -6,19 +6,16 @@ import { NavigationContainer } from "@react-navigation/native";
 import { NativeBaseProvider, Text } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from "./screens/home";
-
 import Favorit   from "./screens/favorit";
 import NewsDetail from "./screens/news-detail";
 import DetailWisata from './screens/detailwisata';
 import Listwisata from './screens/listwisata';
-
-
 import LoginScreen from "./screens/auth/LoginScreen";
 import RegisterScreen from "./screens/auth/RegisterScreen";
 import Berita from "./screens/berita";
-
 import DetailOrder from "./screens/detail-order";
-
+import TopUp from "./screens/top-up.js";
+import KonfirmTopup from "./screens/konfirm-topup.js";
 
 // Navigator Declaration
 const Stack = createNativeStackNavigator();
@@ -91,16 +88,10 @@ const App = () => {
           <Stack.Screen name="Edit Profile" component={EditProfile} options={{headerShown: false}} />
           <Stack.Screen name="Sewa Alat" component={SewaAlat} options={{headerShown: false}} />
           <Stack.Screen name="Tabs" component={Tabs} options={noHead} />
-          <Stack.Screen
-            name="News Detail"
-            component={NewsDetail}
-            options={noHead}
-          />
-          <Stack.Screen
-            name="DetailOrder"
-            component={DetailOrder}
-            options={noHead}
-          />
+          <Stack.Screen name="News Detail" component={NewsDetail} options={noHead}/>
+          <Stack.Screen name="DetailOrder" component={DetailOrder} options={noHead}/>
+          <Stack.Screen name="TopUp" component={TopUp} options={noHead}/>
+          <Stack.Screen name="KonfirmTopup" component={KonfirmTopup} options={noHead}/>
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
