@@ -3,6 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Header } from "../components";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import datas from "../datas";
+import { ImageBackground } from "react-native";
 
 const Berita = () => {
   const navigation = useNavigation();
@@ -44,6 +45,7 @@ const Berita = () => {
     <>
       
       <Header title={"Hot News"} />
+      <ImageBackground source={require("../assets/image_back.jpg")} blurRadius={3} style={{flex:1, resizeMode:"cover"}}>
       <Box p={4}>
       <Input
       size="xl"
@@ -67,6 +69,7 @@ const Berita = () => {
         keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
       />
+      </ImageBackground>
     </>
   );
 };

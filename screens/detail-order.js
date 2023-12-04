@@ -31,6 +31,7 @@ const DetailOrder = ({ route }) => {
   return (
     <>
       <Header title={"Checkout"} withBack="true" />
+      
       <ScrollView p={4}>
       <Box  borderRadius={4} backgroundColor={"#0383A2"} borderColor={"coolGray.300"}>
           <Heading color="white" p={3} fontSize={15}>Your Destination</Heading>

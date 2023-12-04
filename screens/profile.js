@@ -9,12 +9,12 @@ const Profile = () => {
     return(
         <>
             <Header title={"Profile"}  />
-            <ImageBackground source={require("../assets/background.png")} blurRadius={3} style={{flex:1, resizeMode:"cover"}}>
+            <ImageBackground source={require("../assets/image_back.jpg")} blurRadius={3} style={{flex:1, resizeMode:"cover"}}>
                 <Box mt={10} ml={18}>
                 </Box>
                 <Box flex={1} mt={50} alignSelf={"center"} alignItems={"center"} >
                     {/* <Image source={require("../assets/profile.jpeg")} w={128} h={128} borderRadius={100} alt="Profile Picture"/> */}
-                    <Ionicons name="person-circle-outline" size={128} color={"white"}></Ionicons>
+                    <Ionicons name="person-circle-outline" size={128} color={"#0383A2"}></Ionicons>
                     <Text fontSize={24} bold>
                         Profile
                     </Text>
@@ -34,7 +34,7 @@ const Profile = () => {
                         </Pressable>
                     </Box>
                     <Box mb={5}>
-                        <Pressable justifyContent={"center"} alignSelf={"center"} w={312} h={46} borderRadius={100} bg={"white"}>
+                        <Pressable onPress={()=> navigation.navigate("TopUp")} justifyContent={"center"} alignSelf={"center"} w={312} h={46} borderRadius={100} bg={"white"}>
                             <HStack mr={2} justifyContent={"space-between"} alignItems={"center"} >
                                 <HStack alignItems={"center"} ml={15}>
                                     <Ionicons name="add-circle-outline" size={30}/>
