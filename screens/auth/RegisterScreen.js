@@ -9,7 +9,7 @@ import { Ionicons } from "@expo/vector-icons";
 import LoginScreen from "./LoginScreen";
 
 
-const RegisterScreen = ({ navigation }) => {
+const RegisterScreen = ( ) => {
   return (
     
     <Box>
@@ -61,10 +61,6 @@ const RegisterScreen = ({ navigation }) => {
           color="#28AA9B"
           clicked={LoginScreen}
         />
-        {/* Display error message */}
-        {/* {error && <Text style={styles.errorText}>{error}</Text>} */}
-        {/* Rest
-         of the code remains the same */}
         </Box>
       </Box>
 

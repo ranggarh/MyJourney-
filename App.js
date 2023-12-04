@@ -60,6 +60,9 @@ const Tabs = () => {
           backgroundColor:"#0383A2",
           height: 70,
           borderTopWidth: 0,
+          borderTopRightRadius: 10,
+          borderTopLeftRadius: 10,
+          
         },
         tabBarShowLabel: false,
       })}
@@ -77,7 +80,7 @@ const App = () => {
     <NativeBaseProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen name="LoginScreen" component={LoginScreen} options={noHead}/>
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
           <Stack.Screen name='Listwisata' component={Listwisata} options={noHead} />
           <Stack.Screen name='DetailWisata' component={DetailWisata} options={noHead} />

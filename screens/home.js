@@ -1,10 +1,10 @@
-import { Heading, Image, Text, FlatList, Center } from "native-base";
-import { Box, ScrollView, Stack, Input, Icon } from "native-base";
-import { TouchableOpacity } from "react-native";
+import { Heading, Image, Text } from "native-base";
+import { Box, ScrollView, Stack, Input, Icon, Pressable, HStack } from "native-base";
 import { useNavigation } from "@react-navigation/native";
 import { Header } from "../components";
 import datas from "../datas";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import {TouchableOpacity}from "react-native"
 
 
 const Home = () => {
@@ -24,7 +24,7 @@ const Home = () => {
             }/>
           </Stack>
           <Heading size="lg" mt={10} marginLeft={5} color="#B3B3B3">Top Destination</Heading>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} mt={10}  >
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} mt={10} mb={2}  >
             {datas.slice(1).map((item, index) => {
               return (
                 <TouchableOpacity activeOpacity={0.5} key={index} onPress={() =>navigation.navigate("DetailWisata", { item: item })}>
@@ -70,7 +70,9 @@ const Home = () => {
           
           <Box >
           <Heading size="sm"  ml={5} mb={5} >CATEGORIES</Heading>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}  >
+
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} mb={5}  >
+           
             {datas.slice(1).map((item, index) => {
               return (
                 <TouchableOpacity
@@ -90,14 +92,25 @@ const Home = () => {
                   p={1} backgroundColor="white" 
                   alignItems="center"
                   >
-                  
-                    <Text bold fontSize={"sm"}  color="black"  >
+                  <HStack>
+                  <Image
+                   source={{ uri: item.image }}
+                  w="7"
+                  h="7"
+                  alt="CNN Logo"
+                  ml={"4"}
+                  borderRadius={20}
+                  justifyContent={'center'}
+                />
+                    <Text bold fontSize={"sm"}  color="black" ml={4} mr={10} >
                       {item.kategori}
                     </Text>
+                  </HStack>
                   </Box>
                 </TouchableOpacity>             
               );           
-            })}        
+            })}     
+            
           </ScrollView>
           </Box>
         </Box>
