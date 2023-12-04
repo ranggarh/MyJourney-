@@ -1,17 +1,21 @@
 import { CommonActions } from "@react-navigation/native"; // Import CommonActions for navigation
 import React, { useState } from "react";
-import { StatusBar,} from "react-native";
+import { ImageBackground, StatusBar,} from "react-native";
 import { Input, Button, Text, Heading, Box, Pressable } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 const LoginScreen = (props) => {
   return (
+    <ImageBackground
+    source={require("../../assets/wallpaper-login.jpg")}
+    style={{flex:1, resizeMode:"cover"}}
+    blurRadius={3}>
     <Box mt={20} >
       
       <StatusBar backgroundColor="white" barStyle="dark-content" />
 
       <Box alignItems="center"  mb={5}  >
-      <Ionicons name="person-circle-outline" size={150} color="grey" ></Ionicons>
+      <Ionicons name="person-circle-outline" size={150} color="white" ></Ionicons>
       </Box>
 
       
@@ -20,23 +24,30 @@ const LoginScreen = (props) => {
         <Input
           ml={5}
           mr={5}
-          placeholder="Email Address"
+          
         //   onChangeText={setEmail}
         //   value={email}
           fontSize={18}
+          placeholder="Email Address"
           mb={5}
-        />
+          color="white"
+          borderColor="white" borderWidth={"2"}/>
+           
+          
         <Input
         ml={5}
         mr={5}
           fontSize={18}          
+          borderColor="white"
           placeholder="Password"
+          color="white"
+          borderWidth={"2"}
         //   onChangeText={setPassword}
         //   value={password}
           secureTextEntry
-        />
+/>
         <Pressable>
-        <Text textAlign={"right"} mr={5} mb={5} color="grey"  > Forgot Password   </Text>
+        <Text textAlign={"right"} mr={5} mb={5} color="white"  > Forgot Password   </Text>
         </Pressable>
 
         <Pressable>
@@ -66,7 +77,7 @@ const LoginScreen = (props) => {
           color="#FFFFFF"
           borderRadius={15}
           style={{
-            borderColor: "#0F7EF8", 
+            borderColor: "#FFFFFF", 
             borderWidth: 1, 
             backgroundColor: "#FFFFFF", 
           }}
@@ -74,12 +85,13 @@ const LoginScreen = (props) => {
             props.navigation.dispatch(CommonActions.navigate("RegisterScreen"));
           }}
         >
-          <Heading size="xs" color="#0F7EF8">
+          <Heading size="xs" color="#0383A2">
             Register Account
           </Heading>
         </Button>
       </Box>
     </Box>
+    </ImageBackground>
   );
 };
 
