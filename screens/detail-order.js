@@ -128,7 +128,7 @@ const DetailOrder = ({ route }) => {
           <Text p={2} fontSize={15} fontWeight="bold">{formatCurrency(((ticketCount * hargaTiket) + totalPayment + serviceFee))}</Text>
         </Box>
       </Box>
-      <Pressable mt={2} onPress={() => navigation.navigate("Favorit")} backgroundColor={"#28AA9B"} _pressed={{bg: "#0383A2", borderRadius:'10' }}  borderRadius={10}>
+      <Pressable mt={2} onPress={() => navigation.navigate("Pembayaran")} backgroundColor={"#28AA9B"} _pressed={{bg: "#0383A2", borderRadius:'10' }}  borderRadius={10}>
         <Heading alignSelf="center" color="white" p={3} fontSize={15}>Checkout</Heading>        
       </Pressable>
       </ScrollView>

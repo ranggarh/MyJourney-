@@ -16,6 +16,7 @@ import Berita from "./screens/berita";
 import DetailOrder from "./screens/detail-order";
 import TopUp from "./screens/top-up.js";
 import KonfirmTopup from "./screens/konfirm-topup.js";
+import Pembayaran from "./screens/pembayaran.js";
 
 // Navigator Declaration
 const Stack = createNativeStackNavigator();
@@ -92,6 +93,7 @@ const App = () => {
           <Stack.Screen name="DetailOrder" component={DetailOrder} options={noHead}/>
           <Stack.Screen name="TopUp" component={TopUp} options={noHead}/>
           <Stack.Screen name="KonfirmTopup" component={KonfirmTopup} options={noHead}/>
+          <Stack.Screen name="Pembayaran" component={Pembayaran} options={noHead}/>
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>
