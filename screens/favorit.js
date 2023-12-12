@@ -30,7 +30,7 @@ const Favorit = () => {
   return (
     <>
       <Header title={'Favorit'} />
-      <ImageBackground source={require("../assets/image_back.jpg")} blurRadius={3} style={{flex:1, resizeMode:"cover"}}>
+      
       <Heading size="lg" mt={5} marginLeft={5} color="black">
         Top Favorite
       </Heading>
@@ -67,7 +67,7 @@ const Favorit = () => {
         Location
       </Heading>
       <FlatList data={datas} renderItem={renderitem} keyExtractor={(item) => item.id} showsVerticalScrollIndicator={false} />
-      </ImageBackground>
+      
     </>
   );
 };

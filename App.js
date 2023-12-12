@@ -16,6 +16,7 @@ import Berita from "./screens/berita";
 import DetailOrder from "./screens/detail-order";
 import TopUp from "./screens/top-up.js";
 import KonfirmTopup from "./screens/konfirm-topup.js";
+import Pembayaran from "./screens/pembayaran.js";
 
 // Navigator Declaration
 const Stack = createNativeStackNavigator();
@@ -32,26 +33,26 @@ const Tabs = () => {
           switch (route.name) {
             case "Home":
               iconName = "home";
-                color="white" ;
+                color="lightblue" ;
               break;
             case "Favorit":
               iconName = "heart";
-              color="white" ;
+              color="lightblue" ;
               break;
             case "Berita":
               iconName = "newspaper-outline";
-              color="white" ;
+              color="lightblue" ;
               break;
             case "Profile":
               iconName = "person-circle";
-              color="white" ;
+              color="lightblue" ;
               break;
           }
           return (
             <Ionicons
               name={iconName}
               size={30}
-              color={focused ? "lightblue" : color}
+              color={focused ? "white" : color}
             />
           );
         },
@@ -92,6 +93,7 @@ const App = () => {
           <Stack.Screen name="DetailOrder" component={DetailOrder} options={noHead}/>
           <Stack.Screen name="TopUp" component={TopUp} options={noHead}/>
           <Stack.Screen name="KonfirmTopup" component={KonfirmTopup} options={noHead}/>
+          <Stack.Screen name="Pembayaran" component={Pembayaran} options={noHead}/>
           <Stack.Screen name="Home" component={Home} options={noHead}/>
           <Stack.Screen name="Berita" component={Berita} options={noHead} />
         </Stack.Navigator>

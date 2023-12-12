@@ -13,7 +13,7 @@ const SewaAlat = ({ route }) => {
   const [sewaCounts, setSewaCounts] = useState(Array(6).fill(0));
 
   // Keep track of the total payment
-  let totalPayment = 0;
+  let totalSewa = 0;
 
   const incrementSewa = (index) => {
     const newSewaCounts = [...sewaCounts];
@@ -43,7 +43,7 @@ const SewaAlat = ({ route }) => {
         {datas.slice(0, 6).map((item, index) => {
           // Calculate the total for each item
           const itemTotal = sewaCounts[index] * item.harga_alat;
-          totalPayment += itemTotal;
+          totalSewa += itemTotal;
 
           return (
             <React.Fragment key={index}>
@@ -102,8 +102,8 @@ const SewaAlat = ({ route }) => {
 
         </Box>
       </ScrollView>
-      <Pressable onPress={() => navigation.navigate("DetailOrder",{item:params, totalPayment: totalPayment})} backgroundColor={"#28AA9B"} _pressed={{ bg: "#0383A2", borderRadius: '10' }} >
-        <Heading alignSelf="center" color="white" p={4} fontSize={15}>Total Payment : {formatCurrency(totalPayment)}</Heading>
+      <Pressable onPress={() => navigation.navigate("DetailOrder",{item:params, totalSewa: totalSewa})} backgroundColor={"#28AA9B"} _pressed={{ bg: "#0383A2", borderRadius: '10' }} >
+        <Heading alignSelf="center" color="white" p={4} fontSize={15}>Total Payment : {formatCurrency(totalSewa)}</Heading>
       </Pressable>
     </>
   );
