@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Text, HStack, Button, Image, Input, Pressable, Modal } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import { Header } from '../components';
 import { ImageBackground } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const KonfirmTopup = ({ route }) => {
   const { item, topUpAmount: initialTopUpAmount } = route.params;
@@ -26,12 +27,15 @@ const KonfirmTopup = ({ route }) => {
     setTopUpAmount(sanitizedValue);
   };
 
+  
+  
+
   return (
     <>
       <Header title={"Konfirmasi Top up"} withBack={true} />
       <ImageBackground source={require("../assets/image_back.jpg")} blurRadius={10} style={{ flex: 1, resizeMode: "cover" }}>
         <KeyboardAwareScrollView>
-          <Box bg={'white'} p={4} borderRadius={20} mt={3} mb={3} ml={2} mr={2}>
+        <Box bg={'white'} p={4} borderRadius={20} mt={3} mb={3} ml={2} mr={2}>
             <HStack mr={2} justifyContent={'space-between'} alignItems={'center'}>
               <HStack alignItems={'center'} ml={15}>
                 <Image source={item.image} alt="Payment Method" borderRadius={20} size={'30'} />
@@ -65,6 +69,7 @@ const KonfirmTopup = ({ route }) => {
               <Text>{formatCurrency(topUpAmount)}</Text>
             </HStack>
           </Box>
+
         </KeyboardAwareScrollView>
 
         <Box bg={'white'} flexDirection="row" justifyContent="space-between" p={4}>
@@ -92,6 +97,7 @@ const KonfirmTopup = ({ route }) => {
                     // Proceed with the navigation or any other action
                     alert('Top up Berhasil');
                     navigation.navigate("TopUp", { topUpAmount: topUpAmount });
+                    // Assuming you want to navigate to "Pembayaran"
                   }}>
                     Ya
                   </Button>

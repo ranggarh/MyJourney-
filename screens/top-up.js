@@ -5,6 +5,8 @@ import { Header } from '../components';
 import data_topup from '../data_topup';
 import { Ionicons } from '@expo/vector-icons';
 import { ImageBackground } from 'react-native';
+import { useEffect, useState } from 'react';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const TopUp = ({ route }) => {
   const navigation = useNavigation();

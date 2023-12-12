@@ -9,7 +9,7 @@ const DetailOrder = ({ route }) => {
   const navigation = useNavigation();
   const [ticketCount, setTicketCount] = useState(1);
 
-  const totalPayment = route.params.totalPayment ||0;
+  const totalSewa = route.params.totalSewa ||0;
   const serviceFee = 5000;
   const hargaSewa = params.hargaSewa;
   const hargaTiket = params.hargaTiket;
@@ -27,6 +27,9 @@ const DetailOrder = ({ route }) => {
   const formatCurrency = (value) => {
     return value.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
   };
+
+  const totalDestination = (ticketCount * hargaTiket);
+  const totalTicket = (ticketCount * hargaTiket) + totalSewa +serviceFee;
 
   return (
     <>
@@ -113,11 +116,11 @@ const DetailOrder = ({ route }) => {
         </Box>
         <Box flexDirection="row" justifyContent="space-between" alignItems="center">
           <Heading color={'grey'} fontSize={13} ml={5}>Ticket Destination</Heading>
-            <Text color={'grey'} p={2} fontSize={13} fontWeight="bold">{formatCurrency(ticketCount * hargaTiket)}</Text>
+            <Text color={'grey'} p={2} fontSize={13} fontWeight="bold">{formatCurrency(totalDestination)}</Text>
         </Box>
         <Box  flexDirection="row" justifyContent="space-between" alignItems="center">
           <Heading color={'grey'} fontSize={13} ml={5} >Outdoor Equipment</Heading>
-            <Text color={'grey'} p={2} fontSize={13} fontWeight="bold">{formatCurrency(totalPayment)}</Text>
+            <Text color={'grey'} p={2} fontSize={13} fontWeight="bold">{formatCurrency(totalSewa)}</Text>
         </Box>
         <Box  flexDirection="row" justifyContent="space-between" alignItems="center">
           <Heading color={'grey'} fontSize={13} ml={5} >Service Fee</Heading>
@@ -125,10 +128,10 @@ const DetailOrder = ({ route }) => {
         </Box>
         <Box borderTopWidth={1} borderColor={"coolGray.100"} flexDirection="row" justifyContent="space-between" alignItems="center">
           <Heading fontSize={13} ml={5} >Total Pembayaran</Heading>
-          <Text p={2} fontSize={15} fontWeight="bold">{formatCurrency(((ticketCount * hargaTiket) + totalPayment + serviceFee))}</Text>
+          <Text p={2} fontSize={15} fontWeight="bold">{formatCurrency(totalTicket)}</Text>
         </Box>
       </Box>
-      <Pressable mt={2} onPress={() => navigation.navigate("Pembayaran")} backgroundColor={"#28AA9B"} _pressed={{bg: "#0383A2", borderRadius:'10' }}  borderRadius={10}>
+      <Pressable mt={2} onPress={() => navigation.navigate("Pembayaran", {totalSewa:totalSewa, totalTicket:totalTicket, serviceFee:serviceFee, totalDestination:totalDestination})} backgroundColor={"#28AA9B"} _pressed={{bg: "#0383A2", borderRadius:'10' }}  borderRadius={10}>
         <Heading alignSelf="center" color="white" p={3} fontSize={15}>Checkout</Heading>        
       </Pressable>
       </ScrollView>

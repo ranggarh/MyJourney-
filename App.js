@@ -33,26 +33,26 @@ const Tabs = () => {
           switch (route.name) {
             case "Home":
               iconName = "home";
-                color="white" ;
+                color="lightblue" ;
               break;
             case "Favorit":
               iconName = "heart";
-              color="white" ;
+              color="lightblue" ;
               break;
             case "Berita":
               iconName = "newspaper-outline";
-              color="white" ;
+              color="lightblue" ;
               break;
             case "Profile":
               iconName = "person-circle";
-              color="white" ;
+              color="lightblue" ;
               break;
           }
           return (
             <Ionicons
               name={iconName}
               size={30}
-              color={focused ? "lightblue" : color}
+              color={focused ? "white" : color}
             />
           );
         },

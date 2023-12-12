@@ -45,7 +45,7 @@ const Berita = () => {
     <>
       
       <Header title={"Hot News"} />
-      <ImageBackground source={require("../assets/image_back.jpg")} blurRadius={3} style={{flex:1, resizeMode:"cover"}}>
+      
       <Box p={4}>
       <Input
       size="xl"
@@ -69,7 +69,7 @@ const Berita = () => {
         keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
       />
-      </ImageBackground>
+      
     </>
   );
 };
