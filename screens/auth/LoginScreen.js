@@ -60,6 +60,7 @@ const LoginScreen = ({ navigation }) => {
           placeholderTextColor="white"
           fontSize={18}
           borderColor="white" borderWidth={"2"}
+          color="white"
         />
         <Input
           mb={2}
@@ -74,6 +75,7 @@ const LoginScreen = ({ navigation }) => {
           placeholderTextColor="white"
           fontSize={18}
           borderColor="white" borderWidth={"2"}
+          color="white"
         />
         <Button
           my={3}
