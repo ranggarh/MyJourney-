@@ -20,7 +20,7 @@ const LoginScreen = ({ navigation }) => {
     if (email && password) {
       loginUser(email, password)
         .then((user) => {
-          navigation.replace("Home")
+          navigation.replace("Tabs")
           
         })
         .catch((error) => {
@@ -60,6 +60,7 @@ const LoginScreen = ({ navigation }) => {
           placeholderTextColor="white"
           fontSize={18}
           borderColor="white" borderWidth={"2"}
+          color="white"
         />
         <Input
           mb={2}
@@ -74,6 +75,7 @@ const LoginScreen = ({ navigation }) => {
           placeholderTextColor="white"
           fontSize={18}
           borderColor="white" borderWidth={"2"}
+          color="white"
         />
         <Button
           my={3}
