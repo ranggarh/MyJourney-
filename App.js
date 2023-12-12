@@ -80,9 +80,9 @@ const App = () => {
   return (
     <NativeBaseProvider>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName="Login">
           <Stack.Screen name="LoginScreen" component={LoginScreen} options={noHead}/>
-          <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+          <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={noHead} />
           <Stack.Screen name='Listwisata' component={Listwisata} options={noHead} />
           <Stack.Screen name='DetailWisata' component={DetailWisata} options={noHead} />
           <Stack.Screen name="Profile" component={Profile} options={{headerShown: false}}/>
@@ -94,6 +94,8 @@ const App = () => {
           <Stack.Screen name="TopUp" component={TopUp} options={noHead}/>
           <Stack.Screen name="KonfirmTopup" component={KonfirmTopup} options={noHead}/>
           <Stack.Screen name="Pembayaran" component={Pembayaran} options={noHead}/>
+          <Stack.Screen name="Home" component={Home} options={noHead}/>
+          <Stack.Screen name="Berita" component={Berita} options={noHead} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

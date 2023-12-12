@@ -1,70 +1,139 @@
-import { CommonActions } from "@react-navigation/native"; // Import CommonActions for navigation
 import React, { useState } from "react";
-import { StatusBar } from "react-native";
-import { Submit } from "../../components";
-import { Box, Center, Input, Pressable, Text,  } from "native-base";
-// import { MainTabs } from "../MainBottomTab";
-// import axios from "axios";
+import { Box, Text, Input, Button, Alert, Modal, ModalBackdrop, Heading} from "native-base";
+import { ImageBackground} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import LoginScreen from "./LoginScreen";
+import { registerUser } from "../../src/actions/AuthAction";
+import { Header } from "../../components";
+const RegisterScreen = ({ navigation }) => {
+  const [nama, setNama] = useState("");
+  const [email, setEmail] = useState("");
+  const [nohp, setNohp] = useState("");
+  const [password, setPassword] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertMessage, setAlertMessage] = useState("");
 
+  const toggleAlert = (message) => {
+    setShowAlert(!showAlert);
+    setAlertMessage(message);
+  };
 
-const RegisterScreen = ( ) => {
+  const onRegister = async () => {
+    if (nama && email && nohp && password) {
+      const data = {
+        nama: nama,
+        email: email,
+        nohp: nohp,
+        status: "user",
+      };
+
+      console.log(data);
+
+      try {
+        const user = await registerUser(data, password);
+        navigation.replace("LoginScreen");
+      } catch (error) {
+        console.log("Error", error.message);
+        toggleAlert(error.message);
+      }
+    } else {
+      console.log("Error", "Data tidak lengkap");
+      toggleAlert("Data tidak lengkap");
+    }
+  };
+
   return (
     
-    <Box>
-      <StatusBar backgroundColor="white" barStyle="dark-content" />
+    <Box flex={1} >
+      <Header title={"Checkout"} withBack="true" />
+      <ImageBackground
+    source={require("../../assets/wallpaper-login.jpg")}
+    style={{flex:1, resizeMode:"cover"}}
+    blurRadius={3}>
+      <Box
+        borderRadius={8}
+        marginTop={10}
+        marginX={6}
+      >
       
-       <Box p={4} mt={10}>
-        <Text bold fontSize={30}  >Welcome To My Journey </Text>
-        <Text fontSize={20} >Register your account to continue</Text>
-       </Box>
-       <Box alignSelf={"center"} mb={10}>
-       <Ionicons name="person-add-outline" size={100} color="grey"  ></Ionicons>
-       </Box>
-
-      
-
-      <Box>
-        <Input
-          placeholder="Nama"
-          icon="user"
-          style={{ height: 50 }}
-        //   value={nama}
-        //   onChangeText={setName}
-          mb={5}
-          mr={5}
-          ml={5}
-        />
-        <Input
-          placeholder="Email"
-          icon="user"
-          style={{ height: 50 }}
-        //   value={email}
-        //   onChangeText={setEmail}
-          mb={5}
-          mr={5}
-          ml={5}
-        />
-        <Input
-          secureTextEntry
-          mr={5}
-          ml={5}
-          style={{ height: 50 }}
-        //   value={password}
-          placeholder="Password"
-        //   onChangeText={setPassword}
-        />
-        <Box w="72" alignSelf={"center"} mt={10} >
-        <Submit
-          title="Register Account"
-          color="#28AA9B"
-          clicked={LoginScreen}
-        />
-        </Box>
+       <Box alignItems="center"  mb={5}  >
+          <Ionicons name="person-circle-outline" size={130} color="white" ></Ionicons>
       </Box>
 
-      
+      <Heading textAlign="center" fontSize="3xl" color="white" mb={3} > 
+        Register
+      </Heading>
+        <Input
+          my={2}
+          label="Nama"
+          value={nama}
+          onChangeText={(nama) => setNama(nama)}
+          placeholder="Username"
+          borderColor="white" borderWidth={"2"}
+          placeholderTextColor="white"
+          fontSize={18}
+          color="white"
+        />
+        <Input
+          my={2}
+          label="Email"
+          value={email}
+          onChangeText={(email) => setEmail(email)}
+          placeholder="Email"
+          borderColor="white" borderWidth={"2"}
+          placeholderTextColor="white"
+          fontSize={18}
+          color="white"
+        />
+        <Input
+          my={2}
+          label="No. Handphone"
+          keyboardType="phone-pad"
+          value={nohp}
+          onChangeText={(nohp) => setNohp(nohp)}
+          placeholder="HandPhone"
+          borderColor="white" borderWidth={"2"}
+          placeholderTextColor="white"
+          fontSize={18}
+          color="white"
+        />
+        <Input
+          my={2}
+          label="Password"
+          secureTextEntry
+          value={password}
+          onChangeText={(password) => setPassword(password)}
+          placeholder="Password"
+          borderColor="white" borderWidth={"2"}
+          placeholderTextColor="white"
+          fontSize={18}
+          color="white"
+        />
+        <Button
+          my={5}
+          onPress={onRegister}
+          backgroundColor="white"
+          variant="outline"
+          
+          borderRadius="2xl"
+          
+        >
+          <Text color="#0383A2" fontWeight="bold" >
+          Register
+          </Text>
+        </Button>
+      </Box>
+
+      {/* show Alert */}
+      {showAlert && (
+        <Modal isOpen={showAlert} onClose={() => toggleAlert()}>
+          <ModalBackdrop />
+          <Alert status="error" w="90%" mx={4}>
+            <Alert.Text fontWeight="bold">Error!</Alert.Text>
+            <Alert.Text>{alertMessage}</Alert.Text>
+          </Alert>
+        </Modal>
+      )}
+      </ImageBackground>
     </Box>
   );
 };
