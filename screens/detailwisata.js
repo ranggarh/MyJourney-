@@ -36,7 +36,7 @@ const DetailWisata = ({ route }) => {
             <Box maxW="100%">
                 <Box>
                 <AspectRatio w="100%" ratio={15 / 17}>
-                    <Image source={{ uri: params.image}} alt="Image Data"></Image>
+                    <Image source={{ uri: params.imageURL}} alt="Image Data"></Image>
                 </AspectRatio>
                 </Box>
             </Box>
