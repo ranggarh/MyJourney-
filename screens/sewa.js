@@ -2,18 +2,32 @@ import { Heading, Text, Box, Image, ScrollView, Pressable } from "native-base";
 import { Header } from "../components";
 import { useNavigation } from "@react-navigation/native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import datas from "../datas";
+import  {fetchDataFromFirebase}  from '../src/actions/fetchSewa.js';
 
 const SewaAlat = ({ route }) => {
   const params = route.params.item;
   const navigation = useNavigation();
+  const [sewaData, setSewaData] = useState([]);
 
   // Create state variables for each item's ticket count
   const [sewaCounts, setSewaCounts] = useState(Array(6).fill(0));
 
   // Keep track of the total payment
   let totalSewa = 0;
+  const fetchData = async () => {
+    try {
+      const data = await fetchDataFromFirebase();
+      setSewaData(data);
+    } catch (error) {
+      // console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const incrementSewa = (index) => {
     const newSewaCounts = [...sewaCounts];
@@ -36,33 +50,33 @@ const SewaAlat = ({ route }) => {
   return (
     <>
       <Header title={"Outdoor Equipment"} withBack="true" />
-      <ScrollView p={4}>
+      <ScrollView p={4} backgroundColor={"white"}>
         <Box borderRadius={4} backgroundColor={"#0383A2"} borderColor={"coolGray.300"}>
           <Heading color="white" p={3} fontSize={15}>Choose Your Outdoor Equipment</Heading>
         </Box>
-        {datas.slice(0, 6).map((item, index) => {
+        {sewaData.map((item, index) => {
           // Calculate the total for each item
-          const itemTotal = sewaCounts[index] * item.harga_alat;
+          const itemTotal = sewaCounts[index] * item.harga;
           totalSewa += itemTotal;
 
           return (
             <React.Fragment key={index}>
               <Box p={"4"} borderColor={"coolGray.300"} borderWidth={1} borderRadius={10} flexDirection="row" flex={1}>
-                <Box flex={1} mr={4}>
-                  <Heading mt={35} fontSize={15} ml={4}>
-                    {item.nama_alat}
+                <Box flex={1} >
+                  <Heading mt={15} mb={5} fontSize={18}>
+                    {item.namabarang}
                   </Heading>
-                  <Text mb={1} ml={4}>{item.content}</Text>
-                  <Text ml={4} fontWeight="bold" textAlign="left">
-                    Price: {formatCurrency(item.harga_alat)}
+                  <Text mb={1}>{item.deskripsi}</Text>
+                  <Text fontWeight="bold" textAlign="left">
+                    Price: {formatCurrency(item.harga)}
                   </Text>
                 </Box>
-                <Box flex={1} mr={4}>
+                <Box flex={1} mr={1} >
                   <Image
-                    ml={1}
+                    
                     borderRadius={10}
-                    source={{ uri: item.image_sewa }}
-                    w={"380"}
+                    source={{ uri: item.imageURL }}
+                    w={"350"}
                     h={"40"}
                     alt="Image"
                   />

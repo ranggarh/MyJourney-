@@ -18,6 +18,7 @@ import TopUp from "./screens/top-up.js";
 import KonfirmTopup from "./screens/konfirm-topup.js";
 import Pembayaran from "./screens/pembayaran.js";
 import AddWisata from "./screens/admin/add.js";
+import AddBarang from "./screens/admin/addBarang.js";
 
 // Navigator Declaration
 const Stack = createNativeStackNavigator();
@@ -52,6 +53,10 @@ const Tabs = () => {
               iconName = "cloud-upload-outline";
               color="lightblue" ;
               break;
+            case "AddBarang":
+              iconName = "cloud-upload-outline";
+              color="lightblue" ;
+              break;
           }
           return (
             <Ionicons
@@ -78,6 +83,7 @@ const Tabs = () => {
       <Tab.Screen name="Berita" component={Berita} options={noHead} />
       <Tab.Screen name="Profile" component={Profile} options={noHead} />
       <Tab.Screen name="AddWisata" component={AddWisata} options={noHead} />
+      <Tab.Screen name="AddBarang" component={AddBarang} options={noHead} />
     </Tab.Navigator>
   );
 };
@@ -91,6 +97,7 @@ const App = () => {
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={noHead} />
           <Stack.Screen name='Listwisata' component={Listwisata} options={noHead} />
           <Stack.Screen name='AddWisata' component={AddWisata} options={noHead} />
+          <Stack.Screen name='AddBarang' component={AddBarang} options={noHead} />
           <Stack.Screen name='DetailWisata' component={DetailWisata} options={noHead} />
           <Stack.Screen name="Profile" component={Profile} options={{headerShown: false}}/>
           <Stack.Screen name="Edit Profile" component={EditProfile} options={{headerShown: false}} />

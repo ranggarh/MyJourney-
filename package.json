@@ -17,6 +17,7 @@
     "@react-navigation/native-stack": "^6.9.17",
     "@rneui/base": "^4.0.0-rc.8",
     "expo": "~49.0.15",
+    "expo-image-picker": "~14.3.2",
     "expo-status-bar": "~1.6.0",
     "firebase": "^10.7.1",
     "native-base": "^3.4.28",
@@ -27,8 +28,7 @@
     "react-native-safe-area-view": "^1.1.1",
     "react-native-screens": "~3.22.0",
     "react-native-super-grid": "^5.0.0",
-    "react-native-svg": "13.9.0",
-    "expo-image-picker": "~14.3.2"
+    "react-native-svg": "13.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
