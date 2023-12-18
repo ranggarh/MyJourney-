@@ -60,20 +60,20 @@ const Favorit = () => {
               >
                 {console.log('Image Berhasil Dimuat')}
 
-                <Box w={'150'} mr={'4'} ml={index == 0 ? '4' : '0'}>
-                  <Image source={{ uri: item.imageURL }} w="200" h="150" alt="Image Data" mb={'2'} borderRadius={10} />
-                  <Text fontSize={'xs'} color="black" mb={2}>
-                    {item.emoji}
+                <Box borderWidth={1} borderColor={'coolGray.300'} borderRadius={20} w={'160'} mr={'4'} ml={index == 0 ? '4' : '0'}>
+                  <Image source={{ uri: item.imageURL }} w="200" h="150" alt="Image Data" mb={'1'} borderTopRadius={15}/>
+                  <Text fontSize={'md'} color="black" mb={2} ml={1.5}>
+                   ⭐⭐⭐⭐⭐
                   </Text>
-                  <Heading fontSize={'sm'} lineHeight={'xs'} ellipsizeMode="tail" numberOfLines={2} color="black" mb={2}>
+                  <Heading fontSize={'sm'} ml={2} lineHeight={'xs'} ellipsizeMode="tail" numberOfLines={2} fontWeight={"bold"} mb={2}>
                     {item.namawisata}
                   </Heading>
-                  <Pressable>
-                    <Ionicons size={13} color="#28AA9B" name="location-outline">
+                  <Box ml={2} mb={4} mt={-1}>
+                    <Ionicons size={13} color="#0383A2" name="location-outline">
                       {' '}
-                      {item.kota}{' '}
+                      {item.kota}
                     </Ionicons>
-                  </Pressable>
+                  </Box>
                 </Box>
               </Pressable>
             );
