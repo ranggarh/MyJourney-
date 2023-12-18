@@ -61,50 +61,49 @@ const SewaAlat = ({ route }) => {
 
           return (
             <React.Fragment key={index}>
-              <Box p={"4"} borderColor={"coolGray.300"} borderWidth={1} borderRadius={10} flexDirection="row" flex={1}>
-                <Box flex={1} >
-                  <Heading mt={15} mb={5} fontSize={18}>
+              <Box p={"2"} borderColor={"coolGray.300"} borderWidth={1} borderRadius={10} flexDirection="row" flex={1}>
+                <Box flex={1} mr={10} >
+                  <Heading mt={15} mb={5} ml={2} fontSize={18}>
                     {item.namabarang}
                   </Heading>
-                  <Text mb={1}>{item.deskripsi}</Text>
-                  <Text fontWeight="bold" textAlign="left">
+                  <Text mb={1} ml={2}>{item.deskripsi}</Text>
+                  <Text ml={2} fontWeight="bold" textAlign="left">
                     Price: {formatCurrency(item.harga)}
                   </Text>
                 </Box>
-                <Box flex={1} mr={1} >
+                <Box flex={1} mr={3} >
                   <Image
-                    
                     borderRadius={10}
                     source={{ uri: item.imageURL }}
-                    w={"350"}
+                    w={"500"}
                     h={"40"}
                     alt="Image"
                   />
                 </Box>
               </Box>
-              <Box flexDirection="row" marginTop={5} marginRight={9}>
-                <Heading fontSize={15} ml={5}>
+              <Box flexDirection="row" marginTop={3} marginRight={5}>
+                <Heading fontSize={15} ml={4}>
                   Number of Equipment
                 </Heading>
                 <Ionicons
-                  style={{ color: "#28AA9B", marginLeft: 80 }}
-                  size={20}
+                  style={{ color: "#0383A2", marginLeft:80, marginTop:-2 }}
+                  size={25}
                   name="remove-circle-outline"
                   onPress={() => decrementSewa(index)}
                 />
                 <Text mx="auto">{sewaCounts[index]}</Text>
                 <Ionicons
-                  style={{ color: "#28AA9B" }}
-                  size={20}
+                  style={{ color: "#0383A2", marginTop:-2 }}
+                  size={25}
                   name="add-circle-outline"
                   onPress={() => incrementSewa(index)}
                 />
               </Box>
-              <Box flexDirection="row" marginTop={5} marginBottom={5}>
-                <Heading fontSize={15} ml={5}>
+              <Box flexDirection="row" marginTop={1} marginBottom={7}>
+                <Heading fontSize={15} ml={4}>
                   Total 
                 </Heading>
-                <Ionicons style={{ color: "#28AA9B", marginLeft: 160 }} size={20}>
+                <Ionicons style={{ color: "#28AA9B", marginLeft: 185 }} size={20}>
                   <Heading fontSize={15} mx="auto"> {formatCurrency(itemTotal)}</Heading>
                 </Ionicons>
               </Box>
@@ -116,7 +115,7 @@ const SewaAlat = ({ route }) => {
 
         </Box>
       </ScrollView>
-      <Pressable onPress={() => navigation.navigate("DetailOrder",{item:params, totalSewa: totalSewa})} backgroundColor={"#28AA9B"} _pressed={{ bg: "#0383A2", borderRadius: '10' }} >
+      <Pressable onPress={() => navigation.navigate("DetailOrder",{item:params, totalSewa: totalSewa})} backgroundColor={"#0383A2"} _pressed={{ bg: "#0383A2", borderRadius: '10' }} >
         <Heading alignSelf="center" color="white" p={4} fontSize={15}>Total Payment : {formatCurrency(totalSewa)}</Heading>
       </Pressable>
     </>
