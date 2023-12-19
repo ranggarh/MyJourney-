@@ -1,14 +1,29 @@
 import { Box, Image, Text, Pressable, HStack, Modal, VStack, Button } from "native-base";
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import { ImageBackground } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import { Header } from "../components";
 import { logoutUser } from "../src/actions/AuthAction";
+import  {fetchDataFromFirebase}  from '../src/actions/fetchauth.js';
 
 const Profile = () => {
     const navigation = useNavigation();
     const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
+    const [profile, setProfile] = useState(null);
+
+    const fetchData = async () => {
+        try {
+          const data = await fetchDataFromFirebase();
+          setProfile(data);
+        } catch (error) {
+          // console.error('Error fetching data:', error);
+        }
+      };
+    
+      useEffect(() => {
+        fetchData();
+      }, []);
 
     const handleLogout = () => {
         setIsLogoutModalVisible(true);
@@ -37,7 +52,7 @@ const Profile = () => {
                     {/* <Image source={require("../assets/profile.jpeg")} w={128} h={128} borderRadius={100} alt="Profile Picture"/> */}
                     <Ionicons name="person-circle-outline" size={128} color={"#0383A2"}></Ionicons>
                     <Text fontSize={24} bold>
-                        Profile
+                     {profile && profile.length > 0 && profile[0].nama}
                     </Text>
                 </Box>
                 <Box flex={1} mb={150} >
