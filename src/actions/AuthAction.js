@@ -22,7 +22,9 @@ export const registerUser = async (data, password) => {
   }
 };
 
-export const loginUser = async (email, password) => {
+// authAction.js
+
+export const loginUser = async (email, password, navigation) => {
   try {
     const success = await FIREBASE.auth().signInWithEmailAndPassword(email, password);
     const resDB = await FIREBASE.database()
@@ -30,9 +32,21 @@ export const loginUser = async (email, password) => {
       .once("value");
 
     if (resDB.val()) {
+      const userData = resDB.val();
+
+      // Check the user's role
+      if (userData.status === 'admin') {
+        // Navigate to the admin screen
+        navigation.replace("AdminTabs"); // Update with your admin navigation route
+      } else {
+        // Navigate to the user screen
+        navigation.replace("Tabs"); // Update with your user navigation route
+      }
+
       // Local storage (Async Storage)
-      await storeData("user", resDB.val());
-      return resDB.val();
+      await storeData("user", userData);
+
+      return userData;
     } else {
       throw new Error("User data not found");
     }
@@ -40,6 +54,7 @@ export const loginUser = async (email, password) => {
     throw error;
   }
 };
+
 
 export const logoutUser = () => {
   FIREBASE.auth()

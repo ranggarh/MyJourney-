@@ -1,5 +1,5 @@
 import { Box, Stack, Heading, HStack, Image, Center, Text, ScrollView } from "native-base";
-import React, { useState } from "react";
+import React, { useState, } from "react";
 import { Pressable } from "native-base";
 import { TouchableOpacity } from "react-native";
 import { AspectRatio } from "native-base";
