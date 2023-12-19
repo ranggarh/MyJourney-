@@ -49,7 +49,7 @@ const DetailWisata = ({ route }) => {
                     <Text fontSize="sm" ml={-1} mt={-6} >
                         {params.star}
                     </Text>
-                    <Text color="#28AA9B" fontSize="xs" fontWeight="500" ml="-1" mt="-4">
+                    <Text color="#0383A2" fontSize="xs" fontWeight="500" ml="-1" mt="-4">
                     Lumajang, Jawa Timur, Indonesia
                     </Text>
                 </Stack>
@@ -58,7 +58,7 @@ const DetailWisata = ({ route }) => {
                 <Pressable onPress={ () => navigation.navigate("Berita")} >
                     <HStack alignItems="center" space={3} justifyContent="space-between">
                         <HStack alignItems="center">
-                        <Text fontSize={15} ml={-1.5} textAlign="center" color="#28AA9B" fontWeight="400">
+                        <Text fontSize={15} ml={-1.5} textAlign="center" color="#0383A2" underline={true} fontWeight="500">
                              Latest News
                         </Text>
                         </HStack>
@@ -66,11 +66,11 @@ const DetailWisata = ({ route }) => {
                 </Pressable>
     
                 <Box flexDirection="row" justifyContent="space-between">
-                    <Text fontSize={19} color="#28AA9B" fontWeight="800" mt={7}>{formatCurrency(params.hargaTiket)}</Text>
+                    <Text fontSize={19} color="#0383A2" fontWeight="800" mt={7}>{formatCurrency(params.hargaTiket)}</Text>
                     
                     {/* mengarahkan pressable ke fungsi diatas */}
                     <Pressable onPress={()=>navigation.navigate("DetailOrder",{ item: params })}>
-                        <Box backgroundColor="#28AA9B" padding={3} marginLeft={8} borderRadius={8} marginTop={5}>
+                        <Box backgroundColor="#0383A2" padding={3} marginLeft={8} borderRadius={8} marginTop={5}>
                             <Text marginLeft={2} marginRight={2} color="white">Book Now</Text>
                             {/* state booking dipanggil disini */}
                         </Box>

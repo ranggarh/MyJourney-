@@ -4,10 +4,28 @@ import { Header } from "../components";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import datas from "../datas";
 import { ImageBackground } from "react-native";
+import  {fetchDataFromFirebase}  from '../src/actions/fetchBerita.js';
+import React, {useState,useEffect} from "react";
 
 const Berita = () => {
   const navigation = useNavigation();
+  const [beritaData, setBeritaData] = useState([]);
 
+  // Create state variables for each item's ticket count
+
+  // Keep track of the total payment
+  const fetchData = async () => {
+    try {
+      const data = await fetchDataFromFirebase();
+      setBeritaData(data);
+    } catch (error) {
+      // console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
   const renderitem = ({ item }) => {
     return (
       <Pressable
@@ -23,7 +41,7 @@ const Berita = () => {
         >
           <Box flex={1} mr={"4"}>
             <Image
-              source={{ uri: item.image }}
+              source={{ uri: item.imageURL }}
               w="500"
               h="40"
               borderRadius={10}
@@ -33,7 +51,7 @@ const Berita = () => {
           <Box flex={1}>
             <Text fontSize={"sm"}>{item.date}</Text>
             <Heading lineHeight={"md"} fontSize={"md"}>
-              {item.title}
+              {item.namaberita}
             </Heading>
           </Box>
         </Box>
@@ -64,7 +82,7 @@ const Berita = () => {
     />
     </Box>
       <FlatList
-        data={datas}
+        data={beritaData}
         renderItem={renderitem}
         keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}

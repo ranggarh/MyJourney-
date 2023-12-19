@@ -55,7 +55,7 @@ const DetailOrder = ({ route }) => {
             </Heading>
             <Text mb={1} ml={4}>{params.emoji}</Text>
             <Text ml={4}>
-              <Ionicons size={13} color="#28AA9B" name="location-outline">
+              <Ionicons size={13} color="#0383A2" name="location-outline">
                 {params.kota}
               </Ionicons>
             </Text>
@@ -79,14 +79,14 @@ const DetailOrder = ({ route }) => {
             Number of Ticket
           </Heading>
           <Ionicons
-            style={{ color: "#28AA9B", marginLeft: 80 }}
+            style={{ color: "#0383A2", marginLeft: 80 }}
             size={20}
             name="remove-circle-outline"
             onPress={decrementTicket}
           /> 
           <Text mx="auto" >{ticketCount}</Text>
           <Ionicons
-            style={{ color: "#28AA9B" }}
+            style={{ color: "#0383A2" }}
             size={20}
             name="add-circle-outline"
             onPress={incrementTicket}
@@ -107,7 +107,7 @@ const DetailOrder = ({ route }) => {
         <Box  borderBottomWidth={1} borderTopWidth={1} borderColor={"coolGray.300"}>
         <Box borderBottomWidth={1} borderColor={"coolGray.300"} flexDirection="row" justifyContent="space-between" alignItems="center">
           <Heading fontSize={13} p={5}>Choose Your Outdoor Equipment</Heading>
-          <Pressable onPress={()=> navigation.navigate("Sewa Alat",{ item: params })} borderRadius={3}  backgroundColor="#28AA9B" _pressed={{bg: "#0383A2", borderRadius:'5' }}>
+          <Pressable onPress={()=> navigation.navigate("Sewa Alat",{ item: params })} borderRadius={3}  backgroundColor="#0383A2" _pressed={{bg: "#0383A2", borderRadius:'5' }}>
             <Text p={2} fontSize={14} fontWeight="bold" color="white">Rent Here</Text>
           </Pressable>
         </Box>
@@ -131,7 +131,7 @@ const DetailOrder = ({ route }) => {
           <Text p={2} fontSize={15} fontWeight="bold">{formatCurrency(totalTicket)}</Text>
         </Box>
       </Box>
-      <Pressable mt={2} onPress={() => navigation.navigate("Pembayaran", {totalSewa:totalSewa, totalTicket:totalTicket, serviceFee:serviceFee, totalDestination:totalDestination})} backgroundColor={"#28AA9B"} _pressed={{bg: "#0383A2", borderRadius:'10' }}  borderRadius={10}>
+      <Pressable mt={2} onPress={() => navigation.navigate("Pembayaran", {totalSewa:totalSewa, totalTicket:totalTicket, serviceFee:serviceFee, totalDestination:totalDestination})} backgroundColor={"#0383A2"} _pressed={{bg: "#0383A2", borderRadius:'10' }}  borderRadius={10}>
         <Heading alignSelf="center" color="white" p={3} fontSize={15}>Checkout</Heading>        
       </Pressable>
       </ScrollView>

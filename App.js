@@ -19,6 +19,7 @@ import KonfirmTopup from "./screens/konfirm-topup.js";
 import Pembayaran from "./screens/pembayaran.js";
 import AddWisata from "./screens/admin/add.js";
 import AddBarang from "./screens/admin/addBarang.js";
+import AddBerita from "./screens/admin/addBerita.js";
 
 // Navigator Declaration
 const Stack = createNativeStackNavigator();
@@ -57,6 +58,10 @@ const Tabs = () => {
               iconName = "cloud-upload-outline";
               color="lightblue" ;
               break;
+              case "AddBerita":
+                iconName = "cloud-upload-outline";
+                color="lightblue" ;
+                break;
           }
           return (
             <Ionicons
@@ -84,6 +89,7 @@ const Tabs = () => {
       <Tab.Screen name="Profile" component={Profile} options={noHead} />
       <Tab.Screen name="AddWisata" component={AddWisata} options={noHead} />
       <Tab.Screen name="AddBarang" component={AddBarang} options={noHead} />
+      <Tab.Screen name="AddBerita" component={AddBerita} options={noHead} />
     </Tab.Navigator>
   );
 };
@@ -110,6 +116,7 @@ const App = () => {
           <Stack.Screen name="Pembayaran" component={Pembayaran} options={noHead}/>
           <Stack.Screen name="Home" component={Home} options={noHead}/>
           <Stack.Screen name="Berita" component={Berita} options={noHead} />
+          <Stack.Screen name="AddBerita" component={AddBerita} options={noHead} />
         </Stack.Navigator>
       </NavigationContainer>
     </NativeBaseProvider>

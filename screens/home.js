@@ -46,13 +46,14 @@ const Home = () => {
               >
                 <Box
                   w={'48'}
-                  h="64"
+                  h={"72"}
                   mr={'4'}
                   ml={index == 0 ? '4' : '0'}
                   borderRadius={30}
                   borderColor="coolGray.100"
                   borderWidth={4}
                   mb={30}
+              
                 >
                 {console.log('Image Berhasil Dimuat')}
                 <Image
@@ -62,23 +63,25 @@ const Home = () => {
                     h="4/6"
                     alt="Image Data"
                   />
-                  <Text fontSize="md" color="grey" ml={2}>
-                   
+                  
+                  <Text fontSize={'md'} color="black" mt={2} mb={2} ml={1.5}>
+                    ⭐⭐⭐⭐⭐
                   </Text>
-                  <Heading
+                  <Text
                     fontSize={'md'}
                     lineHeight={'xs'}
                     ellipsizeMode="tail"
                     numberOfLines={2}
-                    color="grey"
                     borderRadius={20}
                     ml={2}
                     mb={1}
+                    mt={-1}
+                    fontWeight={"semibold"}
                   >
                     {item.namawisata}
-                  </Heading>
+                  </Text>
                   <Box ml={2}>
-                    <Ionicons name="location" color="#28AA9B" size={14}>
+                    <Ionicons name="location" color="#0383A2" size={14}>
                      {item.kota}
                     </Ionicons>
                   </Box>
@@ -119,6 +122,7 @@ const Home = () => {
                         borderRadius={20}
                         
                       />
+                      
                       <Text bold fontSize={'sm'} color="black" ml={4} mr={10}>
                         {item.kategori}
                       </Text>
