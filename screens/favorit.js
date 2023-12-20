@@ -23,6 +23,7 @@ const Favorit = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  
 
   const renderitem = ({ item }) => {
     return (

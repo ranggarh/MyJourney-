@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Text, Pressable, HStack, Heading, FlatList, Image } from 'native-base';
 import { useNavigation } from '@react-navigation/native';
 import { Header } from '../components';
-import data_topup from '../data_topup';
 import { Ionicons } from '@expo/vector-icons';
 import { ImageBackground } from 'react-native';
-import { useEffect, useState } from 'react';
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { fetchDataFromFirebase, fetchUserSaldoFromFirebase } from '../src/actions/fetchSaldo.js';
+import data_topup from '../data_topup';
+
 
 const TopUp = ({ route }) => {
   const navigation = useNavigation();
+  const [userSaldo, setUserSaldo] = useState(0);
 
   const formatCurrency = (value) => {
     const numericValue = Number(value);
@@ -18,6 +19,19 @@ const TopUp = ({ route }) => {
 
   const { topUpAmount } = route.params || { topUpAmount: 0 };
 
+  useEffect(() => {
+    const fetchUserSaldo = async () => {
+      try {
+        const saldo = await fetchUserSaldoFromFirebase();
+        setUserSaldo(saldo);
+      } catch (error) {
+        console.error('Failed to fetch user saldo:', error);
+      }
+    };
+
+    fetchUserSaldo();
+  }, []);
+ // The empty dependency array ensures this effect runs only once on component mount
 
   const renderItem = ({ item }) => {
     return (
@@ -52,7 +66,7 @@ const TopUp = ({ route }) => {
         <Box bgColor="white" p={'2'} borderRadius={10} ml={2} mr={2} mt={8} mb={5} alignSelf="center">
           <Box>
             <Text fontWeight="bold" textAlign="center">
-              Saldo E-Journey Anda : {formatCurrency(topUpAmount)}
+              Saldo E-Journey Anda : {formatCurrency(userSaldo)}
             </Text>
             <Text fontWeight="light" textAlign="center">
               Ingin Top Up saldo E-Journey untuk berbelanja?

@@ -4,27 +4,28 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import Header from '../components/header';
 import { fetchDataFromFirebase } from '../src/actions/fetchwisata'; // Import your Firebase data fetching function
 
-const Listwisata = () => {
-  const navigation = useNavigation();
-  const route = useRoute();
-  const selectedCity = route.params?.selectedCity || 'List Destination';
-  const [wisataData, setWisataData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await fetchDataFromFirebase();
-        setWisataData(data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
+const KategoriWisata = () => {
+    const navigation = useNavigation();
+    const route = useRoute();
+    const selectedKategori = route.params?.selectedKategori || 'List Destination';
+    const [wisataData, setWisataData] = useState([]);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const data = await fetchDataFromFirebase();
+          setWisataData(data);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      };
+  
+      fetchData();
+    }, []);
 
   // Filter data based on the selected city
-  const filteredData = wisataData.filter(item => item.kota === selectedCity);
+  
+  const filteredData = wisataData.filter(item => item.kategori === selectedKategori);
 
   // renderitem receives an item from filteredData
   const renderitem = ({ item }) => {
@@ -66,7 +67,7 @@ const Listwisata = () => {
   return (
     <>
       {/* Use the selectedCity to dynamically set the title */}
-      <Header title={selectedCity} withBack="true" />
+      <Header title={selectedKategori} withBack="true" />
       <FlatList
         data={filteredData}
         renderItem={renderitem}
@@ -81,4 +82,4 @@ const Listwisata = () => {
   );
 };
 
-export default Listwisata;
+export default KategoriWisata;

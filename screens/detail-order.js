@@ -12,7 +12,7 @@ const DetailOrder = ({ route }) => {
   const totalSewa = route.params.totalSewa ||0;
   const serviceFee = 5000;
   const hargaSewa = params.hargaSewa;
-  const hargaTiket = params.hargaTiket;
+  const hargaTiket = params.harga;
 
   const incrementTicket = () => {
     setTicketCount(ticketCount + 1);
@@ -51,9 +51,9 @@ const DetailOrder = ({ route }) => {
         >
           <Box flex={1} mr={4}>
             <Heading mt={35} fontSize={15} ml={4}>
-              {params.title_wisata}
+              {params.namawisata}
             </Heading>
-            <Text mb={1} ml={4}>{params.emoji}</Text>
+            <Text mb={1} ml={4}>⭐⭐⭐⭐⭐</Text>
             <Text ml={4}>
               <Ionicons size={13} color="#0383A2" name="location-outline">
                 {params.kota}
@@ -67,7 +67,7 @@ const DetailOrder = ({ route }) => {
             <Image
               ml={1}
               borderRadius={10}
-              source={{ uri: params.image }}
+              source={{ uri: params.imageURL }}
               w={"380"}
               h={"40"}
               alt="Image"

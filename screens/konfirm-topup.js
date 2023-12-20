@@ -5,6 +5,8 @@ import { Header } from '../components';
 import { ImageBackground } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import addSaldoFunc from '../src/actions/addSaldo';
+import FIREBASE from '../src/config/FIREBASE';
 
 const KonfirmTopup = ({ route }) => {
   const { item, topUpAmount: initialTopUpAmount } = route.params;
@@ -23,11 +25,37 @@ const KonfirmTopup = ({ route }) => {
   };
 
   const handleTopUpAmountChange = (value) => {
+    // Hapus karakter selain angka
     const sanitizedValue = value.replace(/[^0-9]/g, '');
-    setTopUpAmount(sanitizedValue);
+  
+    // Konversi ke number
+    const numericValue = parseInt(sanitizedValue, 10);
+  
+    // Set state dengan nilai numericValue
+    setTopUpAmount(numericValue);
   };
 
-  
+  const handleTopUpConfirmation = async () => {
+    try {
+      // Get the current user from Firebase Authentication
+      const currentUser = FIREBASE.auth().currentUser;
+
+      // Check if a user is signed in
+      if (currentUser) {
+        // Call addSaldoFunc to update the user's saldo in Firebase
+        await addSaldoFunc(topUpAmount);
+
+        // Proceed with the navigation or any other action
+        alert('Top up Berhasil');
+        navigation.navigate('TopUp', { topUpAmount: topUpAmount });
+      } else {
+        throw new Error('No user is currently signed in');
+      }
+    } catch (error) {
+      console.error('Failed to update saldo:', error);
+    }
+  };
+
   
 
   return (
@@ -92,6 +120,7 @@ const KonfirmTopup = ({ route }) => {
                     Tidak
                   </Button>
                   <Button onPress={() => {
+                    handleTopUpConfirmation();
                     // Add your logic here for handling the confirmation
                     toggleModal();
                     // Proceed with the navigation or any other action

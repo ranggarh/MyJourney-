@@ -25,7 +25,8 @@ const RegisterScreen = ({ navigation }) => {
         nama: nama,
         email: email,
         nohp: nohp,
-        status: role, // Use selected role
+        status: role,
+        saldo: 0, 
       };
 
       try {
@@ -43,7 +44,7 @@ const RegisterScreen = ({ navigation }) => {
 
   return (
     <Box flex={1}>
-      <Header title={"Checkout"} withBack="true" />
+      <Header title={"Register"} withBack="true" />
       <ImageBackground
         source={require("../../assets/wallpaper-login.jpg")}
         style={{ flex: 1, resizeMode: "cover" }}
@@ -113,20 +114,7 @@ const RegisterScreen = ({ navigation }) => {
           />
 
           {/* Dropdown for selecting role */}
-          <Select
-            my={2}
-            selectedValue={role}
-            minWidth={200}
-            onValueChange={(itemValue) => setRole(itemValue)}
-            placeholder="Select Role"
-            _selectedItem={{
-              bg: "teal.600",
-              endIconColor: "teal.600",
-            }}
-          >
-            <Select.Item label="User" value="user" />
-            <Select.Item label="Admin" value="admin" />
-          </Select>
+
 
           <Button
             my={5}
