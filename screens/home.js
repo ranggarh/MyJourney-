@@ -11,11 +11,14 @@ import  {fetchDataFromFirebase}  from '../src/actions/fetchwisata.js'; // Sesuai
 const Home = () => {
   const navigation = useNavigation();
   const [wisataData, setWisataData] = useState([]);
+  const [categories, setCategories] = useState([]);
 
   const fetchData = async () => {
     try {
       const data = await fetchDataFromFirebase();
       setWisataData(data);
+      const uniqueCategories = [...new Set(data.map(item => item.kategori))];
+      setCategories(uniqueCategories);
     } catch (error) {
       // console.error('Error fetching data:', error);
     }
@@ -95,11 +98,11 @@ const Home = () => {
               CATEGORIES
             </Heading>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} mb={5}>
-              {wisataData.map((item, index) => (
+            {categories.map((category, index) => (
                 <TouchableOpacity
                   activeOpacity={0.5}
                   key={index}
-                  onPress={() => navigation.navigate('Listwisata', { item: item })}
+                  onPress={() => navigation.navigate('KategoriWisata', { selectedKategori: category })}
                 >
                   <Box
                     w={'40'}
@@ -114,17 +117,17 @@ const Home = () => {
                     alignItems="center"
                   >
                     <HStack>
-                      <Image
+                      {/* <Image
                         source={{ uri: item.imageURL }}
                         w="7"
                         h="7"
                         alt="CNN Logo"
                         borderRadius={20}
                         
-                      />
+                      /> */}
                       
                       <Text bold fontSize={'sm'} color="black" ml={4} mr={10}>
-                        {item.kategori}
+                        {category}
                       </Text>
                     </HStack>
                   </Box>

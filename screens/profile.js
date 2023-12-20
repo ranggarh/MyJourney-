@@ -6,6 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Header } from "../components";
 import { logoutUser } from "../src/actions/AuthAction";
 import  {fetchDataFromFirebase}  from '../src/actions/fetchauth.js';
+import { getData } from "../src/utils/localStorage/index.js";
 
 const Profile = () => {
     const navigation = useNavigation();
@@ -13,17 +14,20 @@ const Profile = () => {
     const [profile, setProfile] = useState(null);
 
     const fetchData = async () => {
-        try {
-          const data = await fetchDataFromFirebase();
-          setProfile(data);
-        } catch (error) {
-          // console.error('Error fetching data:', error);
-        }
+        getData('user')
+          .then(res => {
+            console.log('User Data:', res);
+            setProfile(res);
+          })
+          .catch(error => {
+            console.error('Error fetching user data:', error);
+          });
       };
-    
+      
       useEffect(() => {
         fetchData();
       }, []);
+      
 
     const handleLogout = () => {
         setIsLogoutModalVisible(true);
@@ -42,6 +46,7 @@ const Profile = () => {
         setIsLogoutModalVisible(false);
       };
 
+      console.log(profile)
     return(
         <>
             <Header title={"Profile"}  />
@@ -52,7 +57,7 @@ const Profile = () => {
                     {/* <Image source={require("../assets/profile.jpeg")} w={128} h={128} borderRadius={100} alt="Profile Picture"/> */}
                     <Ionicons name="person-circle-outline" size={128} color={"#0383A2"}></Ionicons>
                     <Text fontSize={24} bold>
-                     {profile && profile.length > 0 && profile[0].nama}
+                    {profile && profile.nama ? profile.nama : "No Name"}
                     </Text>
                 </Box>
                 <Box flex={1} mb={150} >

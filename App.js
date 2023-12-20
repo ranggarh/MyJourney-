@@ -21,6 +21,8 @@ import AddWisata from "./screens/admin/add.js";
 import AddBarang from "./screens/admin/addBarang.js";
 import AddBerita from "./screens/admin/addBerita.js";
 import ProfileAdmin from "./screens/admin/profileAdmin.js";
+import KategoriWisata from "./screens/kategori-wisata.js";
+
 // Navigator Declaration
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -153,6 +155,7 @@ const App = () => {
           <Stack.Screen name="LoginScreen" component={LoginScreen} options={noHead}/>
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={noHead} />
           <Stack.Screen name='Listwisata' component={Listwisata} options={noHead} />
+          <Stack.Screen name='KategoriWisata' component={KategoriWisata} options={noHead} />
           <Stack.Screen name='AddWisata' component={AddWisata} options={noHead} />
           <Stack.Screen name='AddBarang' component={AddBarang} options={noHead} />
           <Stack.Screen name='DetailWisata' component={DetailWisata} options={noHead} />
