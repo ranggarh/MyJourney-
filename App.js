@@ -10,8 +10,8 @@ import Favorit   from "./screens/favorit";
 import NewsDetail from "./screens/news-detail";
 import DetailWisata from './screens/detailwisata';
 import Listwisata from './screens/listwisata';
-import LoginScreen from "./screens/auth/LoginScreen";
-import RegisterScreen from "./screens/auth/RegisterScreen";
+import LoginScreen from "./screens/auth/LoginScreen.js";
+import RegisterScreen from "./screens/auth/RegisterScreen.js";
 import Berita from "./screens/berita";
 import DetailOrder from "./screens/detail-order";
 import TopUp from "./screens/top-up.js";
@@ -22,6 +22,7 @@ import AddBarang from "./screens/admin/addBarang.js";
 import AddBerita from "./screens/admin/addBerita.js";
 import ProfileAdmin from "./screens/admin/profileAdmin.js";
 import KategoriWisata from "./screens/kategori-wisata.js";
+import Riwayat from "./screens/riwayat-pembelian.js";
 
 // Navigator Declaration
 const Stack = createNativeStackNavigator();
@@ -158,6 +159,7 @@ const App = () => {
           <Stack.Screen name='KategoriWisata' component={KategoriWisata} options={noHead} />
           <Stack.Screen name='AddWisata' component={AddWisata} options={noHead} />
           <Stack.Screen name='AddBarang' component={AddBarang} options={noHead} />
+          <Stack.Screen name='Riwayat' component={Riwayat} options={noHead} />
           <Stack.Screen name='DetailWisata' component={DetailWisata} options={noHead} />
           <Stack.Screen name="Profile" component={Profile} options={{headerShown: false}}/>
           <Stack.Screen name="ProfileAdmin" component={ProfileAdmin} options={{headerShown: false}}/>
