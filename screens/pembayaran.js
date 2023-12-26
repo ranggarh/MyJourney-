@@ -13,7 +13,12 @@ import {
 } from 'native-base';
 import { Header } from '../components';
 import { useNavigation } from '@react-navigation/native';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { fetchUserSaldoFromFirebase } from '../src/actions/fetchSaldo';
+import addTransaksi from '../src/actions/addTransaksi';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
+
+
 
 const Pembayaran = ({ route }) => {
   const totalSewa = route.params.totalSewa || 0;
@@ -21,6 +26,11 @@ const Pembayaran = ({ route }) => {
   const totalDestination = route.params.totalDestination || 0;
   const serviceFee = route.params.serviceFee || 0;
   const totalPembayaran = totalSewa + totalDestination + serviceFee;
+  const itemSewa = route.params.selectedItems || [];
+  const namatiket = route.params.namatiket || [];
+  const jumlahtiket = route.params.jumlahtiket || 0;
+  const gambarWisata = route.params.gambarWisata || [];
+
   const navigation = useNavigation();
 
   const formatCurrency = (value) => {
@@ -30,79 +40,151 @@ const Pembayaran = ({ route }) => {
   const [service, setService] = useState('');
   const [isModalVisible, setModalVisible] = useState(false);
   const [isConfirmed, setConfirmed] = useState(false);
+  const [userSaldo, setUserSaldo] = useState(0);
+  const [userId, setUserId] = useState(null);
+  const auth = getAuth();
+
+
+  useEffect(() => {
+    const fetchUserSaldo = async () => {
+      try {
+        const saldo = await fetchUserSaldoFromFirebase();
+        setUserSaldo(saldo);
+      } catch (error) {
+        console.error('Error fetching user saldo:', error);
+      }
+    };
+  
+    fetchUserSaldo();
+  }, []);
+
+  
+   
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
 
   useEffect(() => {
-    // Check if the user has confirmed the payment
-    if (isConfirmed) {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserId(user.uid);
+      } else {
+        // User is not logged in, handle accordingly
+        setUserId(null);
+      }
+    });
+
+    // Clean up the subscription when the component unmounts
+    return () => unsubscribe();
+  }, [auth]);
+
+  const handlePaymentConfirmation = async () => {
+    try {
+      // Check if userId is available
+      if (!userId) {
+        console.error('User ID is null or undefined');
+        return;
+      }
+
+      // Add transaction details
+      const transactionDetails = {
+        namatiket,
+        jumlahtiket,
+        gambarWisata,
+        itemSewa,
+        totalDestination,
+        totalSewa,
+        serviceFee,
+        totalPembayaran,
+        // Add other details you want to store
+      };
+
+      // Add transaction to Firebase
+      const transactionId = await addTransaksi(userId, transactionDetails);
+
       // Proceed with the checkout logic
-      navigation.navigate('Favorit');
+      navigation.navigate('Riwayat');
+    } catch (error) {
+      console.error('Error processing payment:', error);
     }
-  }, [isConfirmed]);
+  };
+  
 
   return (
     <>
-      <Header title={'Konfirmasi Pembayaran'} withBack="true" />
+      <Header title={'Pembayaran'} withBack="true" />
 
       <ScrollView p={4}>
-        <Box borderRadius={4} marginBottom={5} shadow={2} p={5} bgColor="#d4d4d4">
-          <Heading p={3} fontSize={15}>Detail Pesanan</Heading>
+        <Box borderRadius={4} marginBottom={5} shadow={2} p={5} bgColor={'#0383A2'} >
+          <Heading color={'white'} p={3} fontSize={15}>Detail Pesanan</Heading>
         
-        <Box flexDirection="row" justifyContent="space-between" alignItems="center">
-            <Text fontSize={14} ml={5}>Ticket Destination</Text>
-            <Text fontSize={13} mr={4}>{formatCurrency(totalDestination)}
+        <Box  flexDirection="row" justifyContent="space-between" alignItems="center">
+            <Text color={'white'} fontSize={14} ml={5}>Ticket Destination</Text>
+            <Text color={'white'} fontSize={13} mr={4}>{formatCurrency(totalDestination)}
             </Text>
         </Box>
 
         <Box flexDirection="row" justifyContent="space-between" alignItems="center">
-            <Text fontSize={14} ml={5}>Outdoor Equipment</Text>
-            <Text fontSize={13} mr={4}>{formatCurrency(totalSewa)}
+            <Text color={'white'} fontSize={14} ml={5}>Outdoor Equipment</Text>
+            <Text color={'white'} fontSize={13} mr={4}>{formatCurrency(totalSewa)}
             </Text>
         </Box>
 
         <Box flexDirection="row" justifyContent="space-between" alignItems="center">
-            <Text fontSize={14} ml={5}>Transaction Fee (5.0%)</Text>
-            <Text fontSize={13} mr={4}>{formatCurrency(serviceFee)}
+            <Text color={'white'} fontSize={14} ml={5}>Transaction Fee (5.0%)</Text>
+            <Text color={'white'} fontSize={13} mr={4}>{formatCurrency(serviceFee)}
             </Text>
         </Box>
 
         <Box flexDirection="row" justifyContent="space-between" alignItems="center" marginY={2}>
-            <Heading fontSize={14} ml={5}>Total Payout</Heading>
-            <Text fontSize={13} fontWeight="bold" mr={4}>{formatCurrency(totalPembayaran)}
+            <Heading color={'white'} fontSize={14} ml={5}>Total Payout</Heading>
+            <Text color={'white'} fontSize={13} fontWeight="bold" mr={4}>{formatCurrency(totalPembayaran)}
             </Text>
         </Box>
         </Box>
 
         <Box borderRadius={4}>
           <Box>
+          <Box borderRadius={4}>
+          <Box >
             <Select
-              color="black"
+              color="white"
               selectedValue={service}
               minWidth="200"
               accessibilityLabel="Payment Method"
               placeholder="Payment Method"
-              placeholderTextColor="black"
+              placeholderTextColor="white"
               fontWeight="bold"
               fontSize={15}
               onValueChange={(itemValue) => setService(itemValue)}
+              bgColor="#0383A2"
+              
+              
             >
-              <Select.Item label={`Ejourney : ${formatCurrency(topUpAmount)}`} value="Ejourney" />
-              <Select.Item label="Cash" value="Cash" />
+              <Select.Item  label="Cash" value="Cash" />
+              {userSaldo >= 0 && (
+                <Select.Item
+                  label={`Ejourney : ${formatCurrency(userSaldo)}`}
+                  value="Ejourney"
+                  
+                />
+              )}
             </Select>
           </Box>
-          <Box flexDirection="row">
-            <Text mt={1} fontSize={13}>
-              Tidak Cukup Saldo?
-            </Text>
-            <Pressable onPress={() => navigation.navigate('TopUp')}>
-              <Text mt={1} fontSize={13} fontWeight="bold" fontStyle={'italic'}>
-                {' '}
-                Top Up Disini
+            <Box flexDirection="row">
+              <Text mt={1} fontSize={13}>
+                Tidak Cukup Saldo?
               </Text>
-            </Pressable>
+              <Pressable onPress={() => navigation.navigate('TopUp')}>
+                <Text mt={1} fontSize={13} fontWeight="bold" fontStyle={'italic'}>
+                  {' '}
+                  Top Up Disini
+                </Text>
+              </Pressable>
+            </Box>
+          </Box>
+
           </Box>
         </Box>
       </ScrollView>
@@ -117,8 +199,9 @@ const Pembayaran = ({ route }) => {
         backgroundColor="#28AA9B"
         _pressed={{ bg: '#0383A2', borderRadius: '4' }}
         borderRadius={10}
+        bgColor={'#0383A2'}
       >
-        <Heading alignSelf="center" color="white" p={3} fontSize={15}>
+        <Heading alignSelf="center"  p={3} fontSize={15} color={"white"}>
           Checkout
         </Heading>
       </Pressable>
@@ -133,9 +216,9 @@ const Pembayaran = ({ route }) => {
           <Modal.Footer>
             <Button.Group space={2}>
               
-              <Button onPress={toggleModal}>No</Button>
+              <Button colorScheme="danger" onPress={toggleModal}>No</Button>
               <Button onPress={() => {
-                    // Add your logic here for handling the confirmation
+                    handlePaymentConfirmation();
                     toggleModal();
                     // Proceed with the navigation or any other action
                     alert('Pembayaran Berhasil');

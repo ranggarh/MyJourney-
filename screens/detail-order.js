@@ -11,8 +11,9 @@ const DetailOrder = ({ route }) => {
 
   const totalSewa = route.params.totalSewa ||0;
   const serviceFee = 5000;
-  const hargaSewa = params.hargaSewa;
   const hargaTiket = params.harga;
+  const gambarWisata = params.imageURL;
+  
 
   const incrementTicket = () => {
     setTicketCount(ticketCount + 1);
@@ -30,10 +31,11 @@ const DetailOrder = ({ route }) => {
 
   const totalDestination = (ticketCount * hargaTiket);
   const totalTicket = (ticketCount * hargaTiket) + totalSewa +serviceFee;
+  const selectedItems = route.params.selectedItems || [];
 
   return (
     <>
-      <Header title={"Checkout"} withBack="true" />
+      <Header title={"Detail Pesanan"} withBack="true" />
       
       <ScrollView p={4}>
       <Box  borderRadius={4} backgroundColor={"#0383A2"} borderColor={"coolGray.300"}>
@@ -67,7 +69,7 @@ const DetailOrder = ({ route }) => {
             <Image
               ml={1}
               borderRadius={10}
-              source={{ uri: params.imageURL }}
+              source={{ uri: gambarWisata }}
               w={"380"}
               h={"40"}
               alt="Image"
@@ -76,7 +78,7 @@ const DetailOrder = ({ route }) => {
         </Box>
         <Box flexDirection="row" marginTop={5} marginRight={9}>
           <Heading fontSize={15} ml={5}>
-            Number of Ticket
+            Jumlah Tiket Wisata
           </Heading>
           <Ionicons
             style={{ color: "#0383A2", marginLeft: 80 }}
@@ -92,38 +94,92 @@ const DetailOrder = ({ route }) => {
             onPress={incrementTicket}
           />
         </Box>
-        <Box flexDirection="row" marginTop={5}>
+        <Box flexDirection="row" marginTop={5} mb={5}>
           <Heading fontSize={15} ml={5}>
-            Price
+            Harga
           </Heading>
           <Ionicons style={{ color: "#28AA9B", marginLeft: 160 }} size={20}>
            <Heading fontSize={15} mx="auto" > {formatCurrency(ticketCount * hargaTiket)}</Heading>
           </Ionicons>
         </Box>
         {/* test */}
-        <Box mt={4} borderRadius={4} backgroundColor={"#0383A2"} borderColor={"coolGray.300"}>
-          <Heading color="white" p={3} fontSize={15}>Opsional Outdoor Equipment</Heading>
-        </Box>
+        {/* <Box mt={4} borderRadius={4}  borderColor={"coolGray.300"}>
+          <Heading color="black" p={3} fontSize={15}>Opsional Outdoor Equipment</Heading>
+        </Box> */}
         <Box  borderBottomWidth={1} borderTopWidth={1} borderColor={"coolGray.300"}>
         <Box borderBottomWidth={1} borderColor={"coolGray.300"} flexDirection="row" justifyContent="space-between" alignItems="center">
-          <Heading fontSize={13} p={5}>Choose Your Outdoor Equipment</Heading>
+          <Heading fontSize={13} p={5}>Ingin Menyewa Alat Outdoor Lain?</Heading>
           <Pressable onPress={()=> navigation.navigate("Sewa Alat",{ item: params })} borderRadius={3}  backgroundColor="#0383A2" _pressed={{bg: "#0383A2", borderRadius:'5' }}>
-            <Text p={2} fontSize={14} fontWeight="bold" color="white">Rent Here</Text>
+            <Text p={2} fontSize={14} fontWeight="bold" color="white">Pesan Disini</Text>
           </Pressable>
         </Box>
+        
+
         <Box mt={1} borderRadius={4} borderColor={"coolGray.300"}>
-          <Heading  p={3} fontSize={15}>Order Details</Heading>
+          <Heading p={3} fontSize={15}>
+            Rincian Sewa Alat
+          </Heading>
+          {selectedItems.length === 0 ? (
+            <Text alignSelf="center" fontSize={14} color="red">
+              Tidak ada alat yang disewa.
+            </Text>
+          ) : (
+            // Loop through selected items and display them
+            selectedItems.map((item, index) => (
+              
+              <Box
+                key={index}
+                flexDirection="row"
+                justifyContent="space-between"
+                alignItems="center"
+                backgroundColor={"#0383A2"}
+                p={4}
+                borderRadius={10}
+                mb={4}
+              >
+              <Box flexDirection={"row"} >
+                  <Box>
+                    <Image
+                      source={{ uri: item.imageURL }}
+                      alt="Selected Item"
+                      
+                      w={120}
+                      h={100}
+                      p={5}
+                      mr={2}
+                      borderRadius={10}
+                    />
+                  </Box>
+                  <Box >
+                    <Heading color={"white"} fontSize={14} mt={3} ml={3} >
+                      {item.namaBarang} 
+                    </Heading>
+                    <Text color={"white"} fontSize={13} fontWeight="bold" mt={3} ml={3}>
+                     Jumlah: {item.jumlah} Pcs
+                    </Text>
+                    <Text color={"white"} fontSize={13} fontWeight="bold" ml={3}>
+                     Total: {formatCurrency(item.total)}
+                    </Text>
+                  </Box>
+                </Box>
+              </Box>
+            ))
+          )}
+        </Box>
+
+        <Box mt={1} borderBottomWidth={1}  borderColor={"coolGray.300"}>
+          <Heading  p={3} fontSize={15}>Rincian Pesanan</Heading>
         </Box>
         <Box flexDirection="row" justifyContent="space-between" alignItems="center">
-          <Heading color={'grey'} fontSize={13} ml={5}>Ticket Destination</Heading>
+          <Heading color={'grey'} fontSize={13} ml={5}>Tiket Wisata</Heading>
             <Text color={'grey'} p={2} fontSize={13} fontWeight="bold">{formatCurrency(totalDestination)}</Text>
         </Box>
         <Box  flexDirection="row" justifyContent="space-between" alignItems="center">
-          <Heading color={'grey'} fontSize={13} ml={5} >Outdoor Equipment</Heading>
+          <Heading color={'grey'} fontSize={13} ml={5} >Sewa Alat Outdoor</Heading>
             <Text color={'grey'} p={2} fontSize={13} fontWeight="bold">{formatCurrency(totalSewa)}</Text>
         </Box>
         <Box  flexDirection="row" justifyContent="space-between" alignItems="center">
-          <Heading color={'grey'} fontSize={13} ml={5} >Service Fee</Heading>
+          <Heading color={'grey'} fontSize={13} ml={5} >Biaya Layanan</Heading>
           <Text color={'grey'} p={2} fontSize={13} fontWeight="bold">{formatCurrency(serviceFee)}</Text>
         </Box>
         <Box borderTopWidth={1} borderColor={"coolGray.100"} flexDirection="row" justifyContent="space-between" alignItems="center">
@@ -131,8 +187,9 @@ const DetailOrder = ({ route }) => {
           <Text p={2} fontSize={15} fontWeight="bold">{formatCurrency(totalTicket)}</Text>
         </Box>
       </Box>
-      <Pressable mt={2} onPress={() => navigation.navigate("Pembayaran", {totalSewa:totalSewa, totalTicket:totalTicket, serviceFee:serviceFee, totalDestination:totalDestination})} backgroundColor={"#0383A2"} _pressed={{bg: "#0383A2", borderRadius:'10' }}  borderRadius={10}>
-        <Heading alignSelf="center" color="white" p={3} fontSize={15}>Checkout</Heading>        
+      <Pressable mb={7} mt={2} onPress={() => navigation.navigate("Pembayaran", {totalSewa:totalSewa, totalTicket:totalTicket, serviceFee:serviceFee, totalDestination:totalDestination, selectedItems: selectedItems, namatiket: params.namawisata, // Pass the name of the destination
+      jumlahtiket: ticketCount, gambarWisata: gambarWisata,})} backgroundColor={"#0383A2"} _pressed={{bg: "#0383A2", borderRadius:'10' }}  borderRadius={10}>
+        <Heading alignSelf="center" color="white"  p={3} fontSize={15}>Checkout</Heading>        
       </Pressable>
       </ScrollView>
     </>

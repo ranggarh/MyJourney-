@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Heading, Input, Button, Alert, Modal, ModalBackdrop, AlertText, Text } from "native-base";
+import { Box, Heading, Input, Button, Alert, Modal, ModalBackdrop, AlertText, Text, ScrollView } from "native-base";
 import { loginUser } from "../../src/actions/AuthAction";
 import { ImageBackground } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -40,6 +40,7 @@ const LoginScreen = ({ navigation }) => {
         style={{ flex: 1, resizeMode: "cover" }}
         blurRadius={3}
       >
+      <ScrollView>
         <Box borderRadius={8} marginTop={10} marginX={6}>
           <Box alignItems="center" mt={20} mb={2}>
             <Ionicons name="person-circle-outline" size={130} color="white" />
@@ -55,7 +56,7 @@ const LoginScreen = ({ navigation }) => {
             height={10}
             onChangeText={(text) => setEmail(text)}
             value={email}
-            placeholder="Email/Username"
+            placeholder="Masukkan Email Anda"
             placeholderTextColor="white"
             fontSize={18}
             borderColor="white"
@@ -71,7 +72,7 @@ const LoginScreen = ({ navigation }) => {
             secureTextEntry
             onChangeText={(text) => setPassword(text)}
             value={password}
-            placeholder="Password"
+            placeholder="Masukkan Password Anda"
             placeholderTextColor="white"
             fontSize={18}
             borderColor="white"
@@ -107,6 +108,7 @@ const LoginScreen = ({ navigation }) => {
             </Alert>
           </Modal>
         )}
+        </ScrollView>
       </ImageBackground>
     </Box>
   );

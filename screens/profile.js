@@ -5,7 +5,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import { Header } from "../components";
 import { logoutUser } from "../src/actions/AuthAction";
-import  {fetchDataFromFirebase}  from '../src/actions/fetchauth.js';
 import { getData } from "../src/utils/localStorage/index.js";
 
 const Profile = () => {
@@ -65,9 +64,9 @@ const Profile = () => {
                         <Pressable onPress={() => navigation.navigate("Edit Profile")} justifyContent={"center"} alignSelf={"center"} w={312} h={46} borderRadius={100} bg={"white"}>
                             <HStack mr={2} justifyContent={"space-between"} alignItems={"center"} >
                                 <HStack alignItems={"center"} ml={15}>
-                                    <Ionicons name="person-circle-outline" size={30} />
+                                    <Ionicons name="person-circle" size={30} />
                                     <Text ml={2} fontSize={17}>
-                                        Edit Profile 
+                                        Detail Profile 
                                     </Text>
                                 </HStack>
                                 <Ionicons name="chevron-forward-outline" size={20} />
@@ -78,7 +77,7 @@ const Profile = () => {
                         <Pressable onPress={()=> navigation.navigate("TopUp")} justifyContent={"center"} alignSelf={"center"} w={312} h={46} borderRadius={100} bg={"white"}>
                             <HStack mr={2} justifyContent={"space-between"} alignItems={"center"} >
                                 <HStack alignItems={"center"} ml={15}>
-                                    <Ionicons name="add-circle-outline" size={30}/>
+                                    <Ionicons name="add-circle" size={30}/>
                                     <Text ml={2} fontSize={17}>
                                          Top Up | e-Journey
                                     </Text>
@@ -88,7 +87,7 @@ const Profile = () => {
                         </Pressable>
                     </Box>
                     <Box mb={5}>
-                        <Pressable justifyContent={"center"} alignSelf={"center"} w={312} h={46} borderRadius={100} bg={"white"}>
+                        <Pressable onPress={()=> navigation.navigate("Riwayat")} justifyContent={"center"} alignSelf={"center"} w={312} h={46} borderRadius={100} bg={"white"}>
                             <HStack mr={2} justifyContent={"space-between"} alignItems={"center"} >
                                 <HStack alignItems={"center"} ml={15}>
                                     <Ionicons name="time" size={30} />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Text, Input, Button, Alert, Modal, ModalBackdrop, Heading, Select } from "native-base";
+import { Box, Text, Input, Button, Alert, Modal, ModalBackdrop, Heading, Select, ScrollView } from "native-base";
 import { ImageBackground } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { registerUser } from "../../src/actions/AuthAction";
@@ -10,7 +10,6 @@ const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [nohp, setNohp] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("user"); // Default role is set to "user"
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
@@ -20,36 +19,43 @@ const RegisterScreen = ({ navigation }) => {
   };
 
   const onRegister = async () => {
-    if (nama && email && nohp && password) {
-      const data = {
-        nama: nama,
-        email: email,
-        nohp: nohp,
-        status: role,
-        saldo: 0, 
-      };
+    try {
+      // Check if all required fields are filled
+      if (nama && email && nohp && password) {
+        // Prepare user data for registration
+        const userData = {
+          nama: nama,
+          email: email,
+          nohp: nohp,
+          saldo: 0,
+        };
 
-      try {
-        const user = await registerUser(data, password);
+        // Call registerUser function and wait for the result
+        const user = await registerUser(userData, password);
+
+        // If registration is successful, navigate to the login screen
         navigation.replace("LoginScreen");
-      } catch (error) {
-        console.log("Error", error.message);
-        toggleAlert(error.message);
+      } else {
+        // If any required field is missing, throw an error
+        throw new Error("Data tidak lengkap");
       }
-    } else {
-      console.log("Error", "Data tidak lengkap");
-      toggleAlert("Data tidak lengkap");
+    } catch (error) {
+      // Catch and handle errors that may occur during registration
+      console.error("Error during registration:", error.message);
+      toggleAlert(error.message);
     }
   };
 
   return (
     <Box flex={1}>
       <Header title={"Register"} withBack="true" />
+      
       <ImageBackground
         source={require("../../assets/wallpaper-login.jpg")}
         style={{ flex: 1, resizeMode: "cover" }}
         blurRadius={3}
       >
+      <ScrollView>
         <Box borderRadius={8} marginTop={10} marginX={6}>
           <Box alignItems="center" mb={5}>
             <Ionicons name="person-circle-outline" size={130} color="white"></Ionicons>
@@ -64,7 +70,7 @@ const RegisterScreen = ({ navigation }) => {
             label="Nama"
             value={nama}
             onChangeText={(nama) => setNama(nama)}
-            placeholder="Username"
+            placeholder="Masukkan Nama Lengkap "
             borderColor="white"
             borderWidth={"2"}
             placeholderTextColor="white"
@@ -91,7 +97,7 @@ const RegisterScreen = ({ navigation }) => {
             keyboardType="phone-pad"
             value={nohp}
             onChangeText={(nohp) => setNohp(nohp)}
-            placeholder="HandPhone"
+            placeholder="Masukkan No. Handphone"
             borderColor="white"
             borderWidth={"2"}
             placeholderTextColor="white"
@@ -139,7 +145,9 @@ const RegisterScreen = ({ navigation }) => {
             </Alert>
           </Modal>
         )}
+        </ScrollView>
       </ImageBackground>
+      
     </Box>
   );
 };

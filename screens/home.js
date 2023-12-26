@@ -2,31 +2,73 @@
 
 import React, { useState, useEffect } from 'react';
 import { ScrollView, TouchableOpacity } from 'react-native';
-import { Box, Heading, Image, Text, Icon, HStack } from 'native-base';
+import { Box, Heading, Image, Text, Icon, HStack, Pressable } from 'native-base';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { Header } from '../components';
-import  {fetchDataFromFirebase}  from '../src/actions/fetchwisata.js'; // Sesuaikan path dengan struktur proyek Anda
+import  {fetchDataFromFirebase}  from '../src/actions/fetchwisata.js';
+import { fetchBeritaDataFromFirebase } from '../src/actions/fetchBerita.js';
+
+
 
 const Home = () => {
   const navigation = useNavigation();
   const [wisataData, setWisataData] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [beritaData, setBeritaData] = useState([]);
 
   const fetchData = async () => {
     try {
-      const data = await fetchDataFromFirebase();
-      setWisataData(data);
-      const uniqueCategories = [...new Set(data.map(item => item.kategori))];
+      // Fetch wisata data
+      const wisata = await fetchDataFromFirebase();
+      setWisataData(wisata);
+
+      // Fetch berita data
+      const berita = await fetchBeritaDataFromFirebase(); // Ganti dengan fungsi yang sesuai
+      setBeritaData(berita);
+
+      // Extract unique categories
+      const uniqueCategories = [...new Set(wisata.map(item => item.kategori))];
       setCategories(uniqueCategories);
     } catch (error) {
-      // console.error('Error fetching data:', error);
+      console.error('Error fetching data:', error);
     }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
+  const renderBerita = () => {
+    return (
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        {beritaData.slice(0, 2).map((item, index) => (
+          <Pressable
+            key={index}
+            activeOpacity={0.5}
+            onPress={() => navigation.navigate('News Detail', { item: item })}
+          >
+            <Box   borderWidth={1} borderColor={'coolGray.300'} borderRadius={15}  w={'350'} mr={'4'} ml={index == 0 ? '4' : '0'}>
+              <Image source={{ uri: item.imageURL }} w="350" h="150" alt="Image Data" mb={'1'} borderTopRadius={15} alignItems={'center'} />
+              
+              <Heading  mt={2} fontSize={'sm'} ml={2} lineHeight={'xs'} ellipsizeMode="tail" numberOfLines={2} fontWeight={'bold'} mb={2}>
+                {item.namaberita}
+              </Heading>
+              <Box ml={2} mb={4} mt={-1}>
+                
+              </Box>
+            </Box>
+          </Pressable>
+        ))}
+      </ScrollView>
+    );
+  };
+
+  const categoryImages = {
+    Mountain: require('../assets/mountain.png'), 
+    Beach: require('../assets/beach.png'),
+    
+  };
 
   return (
     <>
@@ -109,7 +151,7 @@ const Home = () => {
                     h={10}
                     mr={3}
                     ml={4}
-                    borderWidth={3}
+                    borderWidth={2}
                     borderColor="coolGray.100"
                     borderRadius={20}
                     p={1}
@@ -117,16 +159,15 @@ const Home = () => {
                     alignItems="center"
                   >
                     <HStack>
-                      {/* <Image
-                        source={{ uri: item.imageURL }}
+                      <Image
+                        source={categoryImages[category]}
                         w="7"
                         h="7"
-                        alt="CNN Logo"
+                        alt="Category Image"
                         borderRadius={20}
-                        
-                      /> */}
+                      />
                       
-                      <Text bold fontSize={'sm'} color="black" ml={4} mr={10}>
+                      <Text fontWeight={"bold"} alignSelf={"center"} fontSize={'sm'} color="black" ml={4} mr={4}>
                         {category}
                       </Text>
                     </HStack>
@@ -136,7 +177,19 @@ const Home = () => {
             </ScrollView>
           </Box>
         </Box>
+        <Box flexDirection={"row"} mt={4}>
+        <Heading size="sm" ml={5} mt={5}>
+            Hot News
+        </Heading>
+        <Pressable onPress={()=> navigation.navigate("Berita")}>
+          <Text color="#0383A2" ml={200} mt={5}>See More</Text>
+        </Pressable>
+        </Box>
+        <Box py={'4'} >
+          {renderBerita()}
+        </Box>
       </ScrollView>
+
     </>
   );
 };

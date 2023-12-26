@@ -115,9 +115,30 @@ const SewaAlat = ({ route }) => {
 
         </Box>
       </ScrollView>
-      <Pressable onPress={() => navigation.navigate("DetailOrder",{item:params, totalSewa: totalSewa})} backgroundColor={"#0383A2"} _pressed={{ bg: "#0383A2", borderRadius: '10' }} >
-        <Heading alignSelf="center" color="white" p={4} fontSize={15}>Total Payment : {formatCurrency(totalSewa)}</Heading>
-      </Pressable>
+      <Pressable
+  onPress={() => {
+    const selectedItems = sewaData
+      .map((item, index) => ({
+        namaBarang: item.namabarang,
+        jumlah: sewaCounts[index],
+        total: sewaCounts[index] * item.harga,
+        imageURL: item.imageURL, // Pass imageURL here
+      }))
+      .filter((item) => item.jumlah > 0);
+
+    navigation.navigate("DetailOrder", {
+      item: params,
+      totalSewa: totalSewa,
+      selectedItems: selectedItems,
+    });
+  }}
+  backgroundColor={"#0383A2"}
+  _pressed={{ bg: "#0383A2", borderRadius: '10' }}
+>
+  <Heading alignSelf="center" color="white" p={4} fontSize={15}>
+    Total Payment : {formatCurrency(totalSewa)}
+  </Heading>
+</Pressable>
     </>
   );
 };
