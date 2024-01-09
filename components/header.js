@@ -19,7 +19,6 @@ const Header = ({ title, withBack = false }) => {
                   source={require("../assets/myjourney-logo2.png")}
                   w="7"
                   h="7"
-                  alt="CNN Logo"
                   mr={"3"}
                   borderRadius={20}
                 />

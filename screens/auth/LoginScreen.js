@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Box, Heading, Input, Button, Alert, Modal, ModalBackdrop, AlertText, Text, ScrollView } from "native-base";
+import { Box, Heading, Input, Button, Alert, Modal, ModalBackdrop, AlertText, Text, ScrollView,Image, Row } from "native-base";
 import { loginUser } from "../../src/actions/AuthAction";
-import { ImageBackground } from "react-native";
+
 import { Ionicons } from "@expo/vector-icons";
 
 const LoginScreen = ({ navigation }) => {
@@ -34,53 +34,59 @@ const LoginScreen = ({ navigation }) => {
   
 
   return (
-    <Box flex={1} backgroundColor="#3498db" justifyContent="center">
-      <ImageBackground
-        source={require("../../assets/wallpaper-login.jpg")}
-        style={{ flex: 1, resizeMode: "cover" }}
-        blurRadius={3}
-      >
-      <ScrollView>
-        <Box borderRadius={8} marginTop={10} marginX={6}>
-          <Box alignItems="center" mt={20} mb={2}>
-            <Ionicons name="person-circle-outline" size={130} color="white" />
-          </Box>
-          <Heading textAlign="center" fontSize="3xl" color="white" mb={4}>
-            Login
-          </Heading>
-          <Input
-            mt={1}
-            mb={2}
-            label="Login"
-            width="full"
-            height={10}
-            onChangeText={(text) => setEmail(text)}
-            value={email}
-            placeholder="Masukkan Email Anda"
-            placeholderTextColor="white"
-            fontSize={18}
-            borderColor="white"
-            borderWidth={"2"}
-            color="white"
-          />
-          <Input
-            mb={2}
-            my={2}
-            label="Password"
-            width="full"
-            height={10}
-            secureTextEntry
-            onChangeText={(text) => setPassword(text)}
-            value={password}
-            placeholder="Masukkan Password Anda"
-            placeholderTextColor="white"
-            fontSize={18}
-            borderColor="white"
-            borderWidth={"2"}
-            color="white"
-          />
-          <Button my={3} colorScheme="teal" borderRadius={5} onPress={handleLogin}>
-            Login
+   
+    <ScrollView backgroundColor="#0383A2">
+    <Box p={"32"} mb={1} backgroundColor={"white"}>
+      <Box alignItems={"center"} flexDirection={"row"} ml={"-20"}>
+       <Image source={require("../../assets/logo2.png")}   
+       w={"32"}
+       h={"32"}
+       alt="Logo2" 
+       />  
+       <Text fontSize={"3xl"} fontWeight={"medium"} color={"#8EC648"}>MyJourney</Text>
+       </Box>  
+    </Box>
+    <Box p={10} mt={-10} height="full" borderTopRadius={45} backgroundColor="#0383A2">
+      <Box>
+        <Text fontSize={22} color={"white"} textAlign={"center"} fontWeight={"bold"} mb={10}>Welcome To MyJourney</Text>
+      </Box>
+      <Text fontSize={16} mb={2} color={"white"}>
+        Email
+      </Text>
+      <Input
+        label="Login"
+        width="full"
+        height={10}
+        onChangeText={(text) => setEmail(text)}
+        value={email}
+        placeholder="Masukkan Email Anda"
+        placeholderTextColor="white"
+        fontSize={18}
+        borderColor="white"
+        borderWidth={"2"}
+        color="white"
+      />
+      <Text fontSize={16} mt={2} mb={2} color={"white"}>
+       Password
+      </Text>
+      <Input
+       label="Password"
+       width="full"
+       height={10}
+       secureTextEntry
+       onChangeText={(text) => setPassword(text)}
+       value={password}
+       placeholder="Masukkan Password Anda"
+       placeholderTextColor="white"
+       fontSize={18}
+       borderColor="white"
+       borderWidth={"2"}
+       color="white"
+      />
+       <Button my={3} backgroundColor={"white"} borderRadius={5} onPress={handleLogin} >
+       <Text color="#0383A2" fontWeight="bold">
+               Login
+              </Text>
           </Button>
           <Box flexDirection="column">
             <Text fontSize="sm" color="white">
@@ -96,10 +102,10 @@ const LoginScreen = ({ navigation }) => {
                 Register
               </Text>
             </Button>
-          </Box>
-        </Box>
+         </Box>   
+    </Box>
 
-        {showAlert && (
+    {showAlert && (
           <Modal isOpen={showAlert} onClose={() => toggleAlert()}>
             <ModalBackdrop />
             <Alert status="error" w="90%" mx={4}>
@@ -108,9 +114,7 @@ const LoginScreen = ({ navigation }) => {
             </Alert>
           </Modal>
         )}
-        </ScrollView>
-      </ImageBackground>
-    </Box>
+  </ScrollView>
   );
 };
 

@@ -23,7 +23,8 @@ import AddBerita from "./screens/admin/addBerita.js";
 import ProfileAdmin from "./screens/admin/profileAdmin.js";
 import KategoriWisata from "./screens/kategori-wisata.js";
 import Riwayat from "./screens/riwayat-pembelian.js";
-
+import LandingPage from "./screens/landing_page.js";
+import LandingPage2 from "./screens/landing_page2.js";
 // Navigator Declaration
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -152,7 +153,9 @@ const App = () => {
   return (
     <NativeBaseProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator initialRouteName="Login">    
+          <Stack.Screen name="LandingPage" component={LandingPage} options={noHead} />
+          <Stack.Screen name="LandingPage2" component={LandingPage2} options={noHead} />
           <Stack.Screen name="LoginScreen" component={LoginScreen} options={noHead}/>
           <Stack.Screen name="RegisterScreen" component={RegisterScreen} options={noHead} />
           <Stack.Screen name='Listwisata' component={Listwisata} options={noHead} />

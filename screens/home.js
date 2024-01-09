@@ -1,5 +1,3 @@
-// Home.js
-
 import React, { useState, useEffect } from 'react';
 import { ScrollView, TouchableOpacity } from 'react-native';
 import { Box, Heading, Image, Text, Icon, HStack, Pressable } from 'native-base';
@@ -67,6 +65,7 @@ const Home = () => {
   const categoryImages = {
     Mountain: require('../assets/mountain.png'), 
     Beach: require('../assets/beach.png'),
+    Waterfall : require('../assets/waterfall.png')
     
   };
 
