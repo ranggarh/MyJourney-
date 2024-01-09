@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Text, Input, Button, Alert, Modal, ModalBackdrop, Heading, Select, ScrollView } from "native-base";
+import { Box, Text, Input, Button, Alert, Modal, ModalBackdrop, Heading, Select, ScrollView,Image } from "native-base";
 import { ImageBackground } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { registerUser } from "../../src/actions/AuthAction";
@@ -47,51 +47,55 @@ const RegisterScreen = ({ navigation }) => {
   };
 
   return (
-    <Box flex={1}>
-      <Header title={"Register"} withBack="true" />
-      
-      <ImageBackground
-        source={require("../../assets/wallpaper-login.jpg")}
-        style={{ flex: 1, resizeMode: "cover" }}
-        blurRadius={3}
-      >
-      <ScrollView>
-        <Box borderRadius={8} marginTop={10} marginX={6}>
-          <Box alignItems="center" mb={5}>
-            <Ionicons name="person-circle-outline" size={130} color="white"></Ionicons>
-          </Box>
-
-          <Heading textAlign="center" fontSize="3xl" color="white" mb={3}>
-            Register
-          </Heading>
-
-          <Input
-            my={2}
-            label="Nama"
-            value={nama}
-            onChangeText={(nama) => setNama(nama)}
-            placeholder="Masukkan Nama Lengkap "
-            borderColor="white"
-            borderWidth={"2"}
-            placeholderTextColor="white"
-            fontSize={18}
-            color="white"
-          />
-
-          <Input
-            my={2}
-            label="Email"
-            value={email}
-            onChangeText={(email) => setEmail(email)}
-            placeholder="Email"
-            borderColor="white"
-            borderWidth={"2"}
-            placeholderTextColor="white"
-            fontSize={18}
-            color="white"
-          />
-
-          <Input
+    <ScrollView backgroundColor="#0383A2">
+    <Box p={"32"} mb={1} backgroundColor={"white"}>
+      <Box alignItems={"center"} flexDirection={"row"} ml={"-20"}>
+       <Image source={require("../../assets/logo2.png")}   
+       w={"32"}
+       h={"32"}
+       alt="Logo2" 
+       />  
+       <Text fontSize={"3xl"} fontWeight={"medium"} color={"#8EC648"}>MyJourney</Text>
+       </Box>  
+    </Box>
+    <Box p={10} mt={-10} height="full" borderTopRadius={45} backgroundColor="#0383A2">
+      <Box>
+        <Text fontSize={22} color={"white"} textAlign={"center"} fontWeight={"bold"} mb={10}>Register Account</Text>
+      </Box>
+      <Text fontSize={16} mb={2} color={"white"}>
+       Nama Lengkap
+      </Text>
+      <Input
+          my={2}
+          label="Nama"
+          value={nama}
+          onChangeText={(nama) => setNama(nama)}
+          placeholder="Masukkan Nama Lengkap "
+          borderColor="white"
+          borderWidth={"2"}
+          placeholderTextColor="white"
+          fontSize={18}
+          color="white"
+      />
+      <Text fontSize={16} mt={2} mb={2} color={"white"}>
+       Email
+      </Text>
+      <Input
+       my={2}
+       label="Email"
+       value={email}
+       onChangeText={(email) => setEmail(email)}
+       placeholder="Email"
+       borderColor="white"
+       borderWidth={"2"}
+       placeholderTextColor="white"
+       fontSize={18}
+       color="white"
+      />
+       <Text fontSize={16} mt={2} mb={2} color={"white"}>
+       No.Handphone
+      </Text>
+      <Input
             my={2}
             label="No. Handphone"
             keyboardType="phone-pad"
@@ -104,8 +108,10 @@ const RegisterScreen = ({ navigation }) => {
             fontSize={18}
             color="white"
           />
-
-          <Input
+      <Text fontSize={16} mt={2} mb={2} color={"white"}>
+       Password
+      </Text>
+      <Input
             my={2}
             label="Password"
             secureTextEntry
@@ -118,11 +124,8 @@ const RegisterScreen = ({ navigation }) => {
             fontSize={18}
             color="white"
           />
-
-          {/* Dropdown for selecting role */}
-
-
-          <Button
+      
+      <Button
             my={5}
             onPress={onRegister}
             backgroundColor="white"
@@ -133,22 +136,19 @@ const RegisterScreen = ({ navigation }) => {
               Register
             </Text>
           </Button>
-        </Box>
+         </Box>   
+ 
 
-        {/* show Alert */}
-        {showAlert && (
+    {showAlert && (
           <Modal isOpen={showAlert} onClose={() => toggleAlert()}>
             <ModalBackdrop />
             <Alert status="error" w="90%" mx={4}>
-              <Alert.Text fontWeight="bold">Error!</Alert.Text>
-              <Alert.Text>{alertMessage}</Alert.Text>
+              <AlertText fontWeight="bold">Error!</AlertText>
+              <AlertText>{alertMessage}</AlertText>
             </Alert>
           </Modal>
         )}
-        </ScrollView>
-      </ImageBackground>
-      
-    </Box>
+  </ScrollView>
   );
 };
 
