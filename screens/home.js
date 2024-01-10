@@ -47,7 +47,7 @@ const Home = () => {
             onPress={() => navigation.navigate('News Detail', { item: item })}
           >
             <Box   borderWidth={1} borderColor={'coolGray.300'} borderRadius={15}  w={'350'} mr={'4'} ml={index == 0 ? '4' : '0'}>
-              <Image source={{ uri: item.imageURL }} w="350" h="150" alt="Image Data" mb={'1'} borderTopRadius={15} alignItems={'center'} />
+              <Image source={{ uri: item.imageURL }} w="350" h="150"  mb={'1'} borderTopRadius={15} alignItems={'center'} />
               
               <Heading  mt={2} fontSize={'sm'} ml={2} lineHeight={'xs'} ellipsizeMode="tail" numberOfLines={2} fontWeight={'bold'} mb={2}>
                 {item.namaberita}
@@ -105,7 +105,7 @@ const Home = () => {
                     source={{ uri: item.imageURL }} 
                     w="full"
                     h="4/6"
-                    alt="Image Data"
+                  
                   />
                   
                   <Text fontSize={'md'} color="black" mt={2} mb={2} ml={1.5}>
@@ -162,7 +162,6 @@ const Home = () => {
                         source={categoryImages[category]}
                         w="7"
                         h="7"
-                        alt="Category Image"
                         borderRadius={20}
                       />
                       

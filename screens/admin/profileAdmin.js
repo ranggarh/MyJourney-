@@ -10,20 +10,6 @@ import  {fetchDataFromFirebase}  from '../../src/actions/fetchauth.js';
 const ProfileAdmin = () => {
     const navigation = useNavigation();
     const [isLogoutModalVisible, setIsLogoutModalVisible] = useState(false);
-    const [profile, setProfile] = useState(null);
-
-    const fetchData = async () => {
-        try {
-          const data = await fetchDataFromFirebase();
-          setProfile(data);
-        } catch (error) {
-          // console.error('Error fetching data:', error);
-        }
-      };
-    
-      useEffect(() => {
-        fetchData();
-      }, []);
 
     const handleLogout = () => {
         setIsLogoutModalVisible(true);
@@ -49,10 +35,9 @@ const ProfileAdmin = () => {
                 <Box mt={10} ml={18}>
                 </Box>
                 <Box flex={1} mt={50} alignSelf={"center"} alignItems={"center"} >
-                    {/* <Image source={require("../assets/profile.jpeg")} w={128} h={128} borderRadius={100} alt="Profile Picture"/> */}
                     <Ionicons name="person-circle-outline" size={128} color={"#0383A2"}></Ionicons>
                     <Text fontSize={24} bold>
-                     {profile && profile.length > 0 && profile[0].nama}
+                     Admin My Journey
                     </Text>
                 </Box>
                 <Box flex={1} mb={150} >
@@ -62,21 +47,7 @@ const ProfileAdmin = () => {
                                 <HStack alignItems={"center"} ml={15}>
                                     <Ionicons name="person-circle-outline" size={30} />
                                     <Text ml={2} fontSize={17}>
-                                        Edit Profile 
-                                    </Text>
-                                </HStack>
-                                <Ionicons name="chevron-forward-outline" size={20} />
-                            </HStack>
-                        </Pressable>
-                    </Box>
-                    
-                    <Box mb={5}>
-                        <Pressable justifyContent={"center"} alignSelf={"center"} w={312} h={46} borderRadius={100} bg={"white"}>
-                            <HStack mr={2} justifyContent={"space-between"} alignItems={"center"} >
-                                <HStack alignItems={"center"} ml={15}>
-                                    <Ionicons name="time" size={30} />
-                                    <Text ml={2} fontSize={17}>
-                                        History Purchase
+                                        Detail Profile 
                                     </Text>
                                 </HStack>
                                 <Ionicons name="chevron-forward-outline" size={20} />
