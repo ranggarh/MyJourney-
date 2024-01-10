@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "myjourney",
+    "name": "My Journey",
     "slug": "myjourney",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/myjourney-logo2.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/myjourney-logo2.png",
@@ -19,12 +19,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/myjourney-logo2.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.akmaldwi_u.myjourney"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "179da225-dc7c-4e36-95b2-72821142effa"
+      }
     }
   }
 }

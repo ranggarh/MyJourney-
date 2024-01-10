@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView } from 'native-base'; // Import ScrollView from NativeBase
+import { ScrollView } from 'native-base'; 
 import {
   Box,
   Heading,
@@ -18,7 +18,7 @@ const AddBerita = () => {
   const [deskripsi, setDeskripsi] = useState('');
 
   useEffect(() => {
-    // Request permission to access the device's photo library
+    // Minta izin untuk mengakses perpustakaan foto perangkat
     (async () => {
       const { status } =
         await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -32,7 +32,7 @@ const AddBerita = () => {
 
   const pickImage = async () => {
     try {
-      // Launch the image picker
+      // Luncurkan pemilih gambar
       let result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
@@ -50,7 +50,7 @@ const AddBerita = () => {
 
   const handleAddBerita = async () => {
     try {
-      // Validate input data (add more validation as needed)
+      // Validate input data (tambahkan validasi lagi sesuai kebutuhan)
       if (!namaberita || !image || !deskripsi ) {
         alert('Please fill in all fields');
         return;
@@ -66,7 +66,7 @@ const AddBerita = () => {
       // Add sewa data
       await addBeritaFunc(beritaData);
 
-      // Clear input fields after adding data
+      // Hapus kolom input setelah menambahkan data
       setNamaberita('');
       setImage(null);
       setDeskripsi('');

@@ -33,9 +33,6 @@ const Profile = () => {
     };
 
       const confirmLogout = () => {
-        // Call your logout function here
-        // For example: logoutUser();
-        // Then navigate to the login screen
         logoutUser();
         {console.log('Log Out Berhasil')}
         navigation.navigate("LoginScreen");

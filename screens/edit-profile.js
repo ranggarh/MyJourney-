@@ -23,7 +23,7 @@ const EditProfile = () => {
           setNohp(user?.nohp || 'No Hp Belum Terdaftar');
           setEmail(user?.email || 'Email Belum Terdaftar');
           setNik(user?.nik || 'Nik Belum Terdaftar');
-          setAlamat(user?.alamat || 'Alamat Belum Terdaftar'); // Set the name to the user's name or an empty string if not available
+          setAlamat(user?.alamat || 'Alamat Belum Terdaftar'); 
         } catch (error) {
           console.error('Error fetching user data:', error);
         }

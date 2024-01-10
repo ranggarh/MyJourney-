@@ -2,26 +2,26 @@ import FIREBASE from '../config/FIREBASE';
 
 const addBeritaFunc = async (beritaData) => {
   try {
-    // Check if Firebase is initialized
+    // Periksa apakah Firebase telah diinisialisasi
     if (!FIREBASE.apps.length) {
       throw new Error('Firebase is not initialized');
     }
 
     const { image, namaberita, deskripsi, ...otherBeritaData } = beritaData;
 
-    // Convert the image URI to a Blob
+    // Konversikan URL gambar menjadi Blob
     const response = await fetch(image);
     const blob = await response.blob();
 
-    // Upload image to Firebase Storage with the wisata name as the file name
+    // Upload gambar ke Firebase Storage dengan nama berita sebagai nama filenya
     const storageRef = FIREBASE.storage().ref();
-    const imageRef = storageRef.child(`images_berita/${namaberita}.jpg`); // Include namawisata in the file name
+    const imageRef = storageRef.child(`images_berita/${namaberita}.jpg`); // Cantumkan namaberita pada nama filenya
     await imageRef.put(blob);
 
-    // Get the download URL for the uploaded image
+    // Dapatkan URL unduhan untuk gambar yang diunggah
     const imageURL = await imageRef.getDownloadURL();
 
-    // Include the image URL and namawisata in the wisataData
+    // Sertakan URL gambar dan namaberita pada beritaData
     const beritaDataWithImage = {
       ...otherBeritaData,
       imageURL,
@@ -29,10 +29,10 @@ const addBeritaFunc = async (beritaData) => {
       deskripsi
     };
 
-    // Assuming you have a reference to the 'wisata' node in your database
+    // Dengan asumsi memiliki referensi ke node 'berita' di database 
     const beritaRef = FIREBASE.database().ref('berita');
 
-    // Push the wisata data to the 'wisata' node
+    // Push data berita ke node 'berita'
     await beritaRef.push(beritaDataWithImage);
 
     console.log('Berita Berhasil Ditambahkan');

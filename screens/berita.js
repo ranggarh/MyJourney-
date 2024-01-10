@@ -25,7 +25,7 @@ const Berita = () => {
   }, []);
 
   const renderitem = ({ item }) => {
-    // Add this check to filter items based on the search term
+    // Tambahkan tanda centang ini untuk memfilter item berdasarkan istilah pencarian
     if (
       searchTerm.length === 0 ||
       item.namaberita.toLowerCase().includes(searchTerm.toLowerCase())
@@ -61,7 +61,7 @@ const Berita = () => {
         </Pressable>
       );
     }
-    return null; // Skip rendering if not matching the search term
+    return null; // Lewati rendering jika tidak cocok dengan istilah pencarian
   };
 
   return (

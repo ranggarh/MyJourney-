@@ -1,5 +1,3 @@
-// firebaseActions.js
-
 import { getDatabase, ref, get } from 'firebase/database';
 
 export const fetchBeritaDataFromFirebase = async () => {
