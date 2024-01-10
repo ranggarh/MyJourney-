@@ -17,6 +17,7 @@ export const fetchUserSaldoFromFirebase = async () => {
     const currentUser = await currentUserPromise;
     const userId = currentUser.uid;
 
+    // mengambil data dari database berdasarkan id
     const db = getDatabase();
     const userRef = ref(db, `users/${userId}`);
     const snapshot = await get(userRef);
@@ -26,6 +27,7 @@ export const fetchUserSaldoFromFirebase = async () => {
       return 0; // Default to 0 if user not found
     }
 
+    // ambil data saldo user
     const userData = snapshot.val();
     const userSaldo = userData.saldo || 0;
 

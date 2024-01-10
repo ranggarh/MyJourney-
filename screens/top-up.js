@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Text, Pressable, HStack, Heading, FlatList, Image } from 'native-base';
-import { useNavigation } from '@react-navigation/native';
-import { Header } from '../components';
 import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { Box, FlatList, HStack, Heading, Image, Pressable, Text } from 'native-base';
+import React, { useEffect, useState } from 'react';
 import { ImageBackground } from 'react-native';
-import { fetchDataFromFirebase, fetchUserSaldoFromFirebase } from '../src/actions/fetchSaldo.js';
+import { Header } from '../components';
 import data_topup from '../data_topup';
+import { fetchUserSaldoFromFirebase } from '../src/actions/fetchSaldo.js';
 
 
 const TopUp = ({ route }) => {
@@ -31,8 +31,8 @@ const TopUp = ({ route }) => {
 
     fetchUserSaldo();
   }, []);
- 
-  
+
+
   const renderItem = ({ item }) => {
     return (
       <Box mb={5} ml={0}>

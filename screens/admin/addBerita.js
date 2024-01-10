@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { ScrollView } from 'native-base'; 
-import {
-  Box,
-  Heading,
-  Text,
-  Input,
-  Button,
-  Image,
-} from 'native-base'; 
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
+import {
+  Box, Button,
+  Image, Input, ScrollView, Text
+} from 'native-base';
+import React, { useEffect, useState } from 'react';
 import addBeritaFunc from '../../src/actions/addBerita';
 
 const AddBerita = () => {
@@ -50,7 +45,6 @@ const AddBerita = () => {
 
   const handleAddBerita = async () => {
     try {
-      // Validate input data (tambahkan validasi lagi sesuai kebutuhan)
       if (!namaberita || !image || !deskripsi ) {
         alert('Please fill in all fields');
         return;
@@ -80,12 +74,7 @@ const AddBerita = () => {
   return (
     <ScrollView backgroundColor="white">
       <Box p={7} mb={1} backgroundColor={"lightblue"}>
-
         <Box  color={"#0383A2"}  alignItems={'center'} textAlign="center" height={100}><Ionicons color={"#0383A2"} name="images-outline" size={49} /></Box>
-        
-        {/* <Heading color={"#0383A2"} mb={16} size="sm" textAlign="center">
-          Make Your Own Destination Here
-        </Heading> */}
       </Box>
       <Box p={10} mt={-10} height="full" borderTopRadius={45} backgroundColor="white">
         <Text fontSize={16} mb={2}>

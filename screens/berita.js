@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Heading, Image, Text, Box, Input, Icon, FlatList, Pressable } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useNavigation } from "@react-navigation/native";
+import { Box, FlatList, Heading, Icon, Image, Input, Pressable, Text } from "native-base";
+import React, { useEffect, useState } from "react";
 import { Header } from "../components";
 import { fetchBeritaDataFromFirebase } from '../src/actions/fetchBerita';
 
@@ -25,7 +25,7 @@ const Berita = () => {
   }, []);
 
   const renderitem = ({ item }) => {
-    // Tambahkan tanda centang ini untuk memfilter item berdasarkan istilah pencarian
+   
     if (
       searchTerm.length === 0 ||
       item.namaberita.toLowerCase().includes(searchTerm.toLowerCase())
@@ -61,7 +61,7 @@ const Berita = () => {
         </Pressable>
       );
     }
-    return null; // Lewati rendering jika tidak cocok dengan istilah pencarian
+    return null; 
   };
 
   return (
