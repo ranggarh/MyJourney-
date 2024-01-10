@@ -58,7 +58,6 @@ const Riwayat = () => {
     return (
       <Pressable
         activeOpacity={0.5}
-        onPress={() => navigation.navigate("News Detail", { item: item })}
       >
         <Box
           p={"4"}
