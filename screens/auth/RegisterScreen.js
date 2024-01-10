@@ -9,6 +9,8 @@ const RegisterScreen = ({ navigation }) => {
   const [nama, setNama] = useState("");
   const [email, setEmail] = useState("");
   const [nohp, setNohp] = useState("");
+  const [nik, setNik] = useState("");
+  const [alamat, setAlamat] = useState("");
   const [password, setPassword] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -21,10 +23,12 @@ const RegisterScreen = ({ navigation }) => {
   const onRegister = async () => {
     try {
       // Check if all required fields are filled
-      if (nama && email && nohp && password) {
+      if (nama && email && nohp && password && nik && alamat) {
         // Prepare user data for registration
         const userData = {
           nama: nama,
+          nik: nik,
+          alamat: alamat,
           email: email,
           nohp: nohp,
           saldo: 0,
@@ -77,21 +81,6 @@ const RegisterScreen = ({ navigation }) => {
           fontSize={18}
           color="white"
       />
-      <Text fontSize={16} mt={2} mb={2} color={"white"}>
-       Email
-      </Text>
-      <Input
-       my={2}
-       label="Email"
-       value={email}
-       onChangeText={(email) => setEmail(email)}
-       placeholder="Email"
-       borderColor="white"
-       borderWidth={"2"}
-       placeholderTextColor="white"
-       fontSize={18}
-       color="white"
-      />
        <Text fontSize={16} mt={2} mb={2} color={"white"}>
        No.Handphone
       </Text>
@@ -108,6 +97,55 @@ const RegisterScreen = ({ navigation }) => {
             fontSize={18}
             color="white"
           />
+
+        <Text fontSize={16} mt={2} mb={2} color={"white"}>
+          Alamat
+          </Text>
+          <Input
+                my={2}
+                label="Alamat"
+                value={alamat}
+                onChangeText={(alamat) => setAlamat(alamat)}
+                placeholder="Masukkan Alamat"
+                borderColor="white"
+                borderWidth={"2"}
+                placeholderTextColor="white"
+                fontSize={18}
+                color="white"
+              />
+            
+            
+        <Text fontSize={16} mt={2} mb={2} color={"white"}>
+       NIK
+      </Text>
+      <Input
+            my={2}
+            label="nik"
+            value={nik}
+            onChangeText={(nik) => setNik(nik)}
+            placeholder="Masukkan NIK"
+            borderColor="white"
+            borderWidth={"2"}
+            placeholderTextColor="white"
+            fontSize={18}
+            color="white"
+          />
+        <Text fontSize={16} mt={2} mb={2} color={"white"}>
+
+      Email
+      </Text>
+            <Input
+            my={2}
+            label="Email"
+            value={email}
+            onChangeText={(email) => setEmail(email)}
+            placeholder="Email"
+            borderColor="white"
+            borderWidth={"2"}
+            placeholderTextColor="white"
+            fontSize={18}
+            color="white"
+            />
       <Text fontSize={16} mt={2} mb={2} color={"white"}>
        Password
       </Text>

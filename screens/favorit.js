@@ -35,7 +35,7 @@ const Favorit = () => {
             onPress={() => navigation.navigate('DetailWisata', { item: item })}
           >
             <Box borderWidth={1} borderColor={'coolGray.300'} borderRadius={20} w={'160'} mr={'4'} ml={index == 0 ? '4' : '0'}>
-              <Image source={{ uri: item.imageURL }} w="200" h="150" alt="Image Data" mb={'1'} borderTopRadius={15} />
+              <Image source={{ uri: item.imageURL }} w="200" h="150" mb={'1'} borderTopRadius={15} />
               <Text fontSize={'md'} color="black" mb={2} ml={1.5}>
                 ⭐⭐⭐⭐⭐
               </Text>

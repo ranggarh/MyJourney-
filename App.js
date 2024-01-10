@@ -104,15 +104,15 @@ const AdminTabs = () => {
           let iconName;
           switch (route.name) {
             case "AddWisata":
-              iconName = "cloud-upload-outline";
+              iconName = "planet-outline";
               color="lightblue" ;
               break;
             case "AddBarang":
-              iconName = "cloud-upload-outline";
+              iconName = "briefcase-outline";
               color="lightblue" ;
               break;
               case "AddBerita":
-                iconName = "cloud-upload-outline";
+                iconName = "earth-outline";
                 color="lightblue" ;
                 break;
             case "ProfileAdmin":
